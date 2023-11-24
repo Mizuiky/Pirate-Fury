@@ -15,6 +15,8 @@ public class MoveScript : MonoBehaviour
 
     private float _vertical;
 
+    public bool isMoving = false;
+
     [Header("Rotation Components")]
 
     [SerializeField]
@@ -24,9 +26,20 @@ public class MoveScript : MonoBehaviour
 
     private float _angle;
 
+    private void Start()
+    {
+        Init();
+    }
+
     private void Update()
     {
-        SetInput();
+        if(isMoving)
+            SetInput();
+    }
+
+    public void Init()
+    {
+        isMoving = true;
     }
 
     private void SetInput()
