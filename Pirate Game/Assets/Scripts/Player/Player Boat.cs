@@ -8,6 +8,8 @@ public class PlayerBoat : MonoBehaviour
     [SerializeField]
     private MoveScript _move;
 
+    [Space(10)]
+
     [SerializeField]
     private HealthBase _healthBase;
 

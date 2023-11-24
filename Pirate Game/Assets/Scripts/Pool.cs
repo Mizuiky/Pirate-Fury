@@ -1,0 +1,103 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum PoolType
+{
+    CannonBall,
+    Enemy
+}
+
+public class Pool : MonoBehaviour
+{
+    [SerializeField]
+    private PoolComponent [] _pools;
+
+    private Dictionary<PoolType, PoolComponent> poolDictionary;
+
+    private PoolComponent usedPool;
+
+    private IEnable poolItem;
+
+    private void Start()
+    {
+        InitPool();
+    }
+
+    private void InitPool()
+    {
+        poolDictionary = new Dictionary<PoolType, PoolComponent>();
+
+        foreach (PoolComponent poll in _pools)
+        {
+            poolDictionary.Add(poll.type, poll);
+
+            CreatePool(poll);
+        }
+    }
+
+    private void CreatePool(PoolComponent pool)
+    {
+        pool.poolList = new List<IEnable>();
+
+        for (int i = 0; i < pool.size; i++)
+        {
+            poolItem = CreatePoolItem(pool);
+
+            if(poolItem != null)
+                pool.poolList.Add(poolItem);   
+        }
+    }
+
+    private IEnable CreatePoolItem(PoolComponent pool)
+    {
+        GameObject prefab = Instantiate(pool.prefab, pool.parent);
+
+        poolItem = prefab.GetComponent<IEnable>();
+
+        if (poolItem == null)
+            return null;
+
+        poolItem.DisableComponent();
+        return poolItem;
+    }
+
+    public IEnable GetItem(PoolType type)
+    {
+        usedPool = null;
+
+        usedPool = poolDictionary[type];
+
+        foreach(IEnable poolItem in usedPool.poolList)
+        {
+            if (!poolItem.IsActive)
+                return poolItem;
+        }
+
+        IEnable item = CreatePoolItem(usedPool);
+
+        if (item == null)
+            return null;
+
+        usedPool.poolList.Add(item);
+
+        return poolItem;
+
+    }
+}
+
+[System.Serializable]
+public class PoolComponent
+{
+
+    public GameObject prefab;
+
+    public int size;
+
+    public PoolType type;
+
+    public Transform parent;
+
+    public List<IEnable> poolList;
+
+}

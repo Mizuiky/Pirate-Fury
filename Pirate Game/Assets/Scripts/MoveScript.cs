@@ -17,6 +17,8 @@ public class MoveScript : MonoBehaviour
 
     public bool isMoving = false;
 
+    [Space(10)]
+
     [Header("Rotation Components")]
 
     [SerializeField]
