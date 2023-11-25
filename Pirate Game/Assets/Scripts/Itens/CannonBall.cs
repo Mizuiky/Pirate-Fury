@@ -30,9 +30,8 @@ public class CannonBall : MonoBehaviour, IEnable
             transform.position +=  transform.up * _speed * Time.deltaTime;
 
         if(_currentTime < _timeToDestroy)
-        {
             _currentTime += Time.deltaTime;
-        }
+
         else
         {
             _currentTime = 0;
@@ -51,7 +50,7 @@ public class CannonBall : MonoBehaviour, IEnable
         _isActive = true;     
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         IDamageable collidedComponent = collision.gameObject.GetComponent<IDamageable>();
 

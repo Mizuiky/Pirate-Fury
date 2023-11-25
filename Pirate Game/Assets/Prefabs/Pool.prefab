@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pools:
-  - prefab: {fileID: 5321099780131917993, guid: 5664dad827b8afb42881d7f10db3dcfe, type: 3}
-    size: 10
+  - prefab: {fileID: 1159260120426265881, guid: 5664dad827b8afb42881d7f10db3dcfe, type: 3}
+    size: 20
     type: 0
     parent: {fileID: 5486855008624757353}

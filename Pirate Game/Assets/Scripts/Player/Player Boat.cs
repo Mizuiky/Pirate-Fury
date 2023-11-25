@@ -25,11 +25,14 @@ public class PlayerBoat : MonoBehaviour
 
     public void Init()
     {
-        _healthBase.OnKill += OnDeath;
+        if(_healthBase != null)
+        {
+            _healthBase.OnKill += OnDeath;
 
-        _healthBase.Reset();
+            _healthBase.Reset();
+        }
 
-        _move.Init();
+        _move?.Init();
 
         transform.position = _startPosition.position;
     }

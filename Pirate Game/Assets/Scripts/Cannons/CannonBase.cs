@@ -5,57 +5,41 @@ using UnityEngine;
 public class CannonBase : MonoBehaviour, ICannon
 {
     [SerializeField]
-    private Transform _cannonPosition;
+    protected Transform _cannonPosition;
 
     [SerializeField]
-    private KeyCode _shootKey;
+    protected KeyCode _shootKey;
 
     [SerializeField]
-    private float timeBetweenShoots;
+    protected float timeBetweenShoots;
 
     private IEnable cannonBall;
 
-    private bool _isShooting;
+    protected Vector3 positionToShoot;
 
     private void Update()
     {
-        //if (Input.GetKey(_shootKey))
-        //{
-        //    _isShooting = true;
-        //    Shoot();
-        //}    
-        //else if(Input.GetKeyUp(_shootKey))
-        //    _isShooting = false;
+        ShootInput();
+    }
 
+    protected virtual void ShootInput()
+    {
         if (Input.GetKeyDown(_shootKey))
             Shoot();
     }
 
     public virtual void Shoot()
     {
+        positionToShoot = _cannonPosition.position;
         StartShoot();
-
-        //StartCoroutine(ShootCoroutine());
     }
 
-    protected virtual IEnumerator ShootCoroutine()
-    {
-        while(_isShooting)
-        {
-            StartShoot();
-
-            yield return new WaitForSeconds(timeBetweenShoots);
-        }
-
-        _isShooting = false;
-    }
-
-    private void StartShoot()
+    protected void StartShoot()
     {
         cannonBall = GameManager.Instance.Pool.GetItem(PoolType.CannonBall);
 
         //shootParticle?.Play();
 
-        cannonBall?.Init(_cannonPosition.position, _cannonPosition.rotation);          
+        cannonBall?.Init(positionToShoot, _cannonPosition.rotation);          
     }
 }
