@@ -19,12 +19,7 @@ public class Pool : MonoBehaviour
 
     private IEnable poolItem;
 
-    private void Start()
-    {
-        InitPool();
-    }
-
-    private void InitPool()
+    public void InitPool()
     {
         poolDictionary = new Dictionary<PoolType, PoolComponent>();
 

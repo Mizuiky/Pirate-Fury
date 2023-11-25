@@ -4,9 +4,9 @@ using UnityEngine;
 
 public interface IEnable
 {
-    public void DisableComponent();
+    public void Init(Vector3 position, Quaternion rotation);
 
-    public void EnableComponent();
+    public void DisableComponent();
 
     public bool IsActive { get; }
 }

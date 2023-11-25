@@ -72,6 +72,7 @@ public class MoveScript : MonoBehaviour
         _RotateTo = Quaternion.Euler(0, 0, _angle);
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, _RotateTo, _speedRotation * Time.deltaTime);
+
     }
 
     public void OnDrawGizmos()
