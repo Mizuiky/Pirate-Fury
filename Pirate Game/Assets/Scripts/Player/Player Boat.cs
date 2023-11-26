@@ -23,6 +23,12 @@ public class PlayerBoat : MonoBehaviour
         Init();
     }
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+            _healthBase.Damage(2f);
+    }
+
     public void Init()
     {
         if(_healthBase != null)

@@ -8,5 +8,5 @@ public interface IHealth
 
     public void Reset();
 
-    public void UpdateLife();
+    public void UpdateLife(float value);
 }
