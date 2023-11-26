@@ -79,7 +79,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1447783840923564428}
   - component: {fileID: 5343795842123332657}
-  - component: {fileID: 5889106198419119488}
+  - component: {fileID: 1091321651426909808}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -111,15 +111,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1002430545738834969}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e563a935100a0004c889f7c7ee0e8dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _cannonPosition: {fileID: 4097370849071674384}
   _shootKey: 32
-  timeBetweenShoots: 1
---- !u!114 &5889106198419119488
+  _cannonBallType: 0
+--- !u!114 &1091321651426909808
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,13 +128,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1002430545738834969}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 041dd22ab23467747b298e12377ee9df, type: 3}
+  m_Script: {fileID: 11500000, guid: e563a935100a0004c889f7c7ee0e8dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _cannonPosition: {fileID: 4097370849071674384}
-  _shootKey: 32
-  timeBetweenShoots: 0.5
-  _cannonBallOffset: 0.5
+  _shootKey: 8
+  _cannonBallType: 1
 --- !u!1 &2360996539077787877
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,7 +671,7 @@ GameObject:
   - component: {fileID: 3790454224282444294}
   m_Layer: 0
   m_Name: PlayerBoat
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -739,7 +738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startLife: 20
   _damagePercent: 1
-  healthSlider: {fileID: 0}
+  healthSlider: {fileID: 4070844411565613253}
 --- !u!60 &3790454224282444294
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -769,7 +768,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -975,11 +974,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1273591559836047063, guid: 3149aae2ce1d77c449cdeddf1c9218d3, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1273591559836047063, guid: 3149aae2ce1d77c449cdeddf1c9218d3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1434975905112315119, guid: 3149aae2ce1d77c449cdeddf1c9218d3, type: 3}
       propertyPath: m_Pivot.x
@@ -1067,13 +1066,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3917889425047019863, guid: 3149aae2ce1d77c449cdeddf1c9218d3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3149aae2ce1d77c449cdeddf1c9218d3, type: 3}
+--- !u!114 &4070844411565613253 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8639853888177737450, guid: 3149aae2ce1d77c449cdeddf1c9218d3, type: 3}
+  m_PrefabInstance: {fileID: 5735446521854045743}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037ee0271d283dd4d91bb1a3e909c235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6661501984726252224 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1434975905112315119, guid: 3149aae2ce1d77c449cdeddf1c9218d3, type: 3}

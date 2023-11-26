@@ -24,10 +24,6 @@ public class MoveScript : MonoBehaviour
     [SerializeField]
     private float _speedRotation;
 
-    private Quaternion _RotateTo;
-
-    private float _angle;
-
     private void Start()
     {
         Init();
@@ -67,12 +63,10 @@ public class MoveScript : MonoBehaviour
 
     private void Rotate()
     {
-        _angle = Mathf.Atan2(_moveTo.x, _moveTo.y) * Mathf.Rad2Deg;
 
-        _RotateTo = Quaternion.Euler(0, 0, _angle);
+        Quaternion desiredRotation = Quaternion.LookRotation(Vector3.forward, _moveTo);
 
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, _RotateTo, _speedRotation * Time.deltaTime);
-
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, _speedRotation * Time.deltaTime);
     }
 
     public void OnDrawGizmos()
@@ -81,6 +75,5 @@ public class MoveScript : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawRay(ray);
-
     }
 }

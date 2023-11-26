@@ -18,10 +18,11 @@ public class PlayerBoat : MonoBehaviour
 
     public Action OnPlayerDeath;
 
-    private void Start()
-    {
-        Init();
-    }
+    protected ParticleSystem deathParticle;
+
+    protected ParticleSystem damageParticle;
+
+    public Transform PlayerPosition { get { return transform; } }
 
     public void Update()
     {
@@ -29,23 +30,35 @@ public class PlayerBoat : MonoBehaviour
             _healthBase.Damage(2f);
     }
 
-    public void Init()
+    public void Init(Vector3 startPosition)
     {
         if(_healthBase != null)
         {
             _healthBase.OnKill += OnDeath;
+            _healthBase.OnDamage += OnDamage;
 
             _healthBase.Reset();
         }
 
         _move?.Init();
 
-        transform.position = _startPosition.position;
+        transform.position = startPosition;
+    }
+
+    private void Reset()
+    {
+
+    }
+
+    private void OnDamage()
+    {
+
     }
 
     private void OnDeath()
     {
-        //stop player boat
+        Debug.Log("OnPlayerDeath");
+
         _move.isMoving = false;
 
         //death animation

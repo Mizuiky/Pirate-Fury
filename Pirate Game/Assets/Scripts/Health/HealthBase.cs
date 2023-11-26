@@ -16,7 +16,7 @@ public class HealthBase : MonoBehaviour, IHealth, IDamageable
 
     private float _currentLife;
 
-    public float CurrentLife { get { return _currentLife;  } }
+    public float CurrentLife { get { return _currentLife; } }
 
     public Action OnKill;
     public Action OnDamage;
@@ -30,6 +30,10 @@ public class HealthBase : MonoBehaviour, IHealth, IDamageable
 
     public virtual void Damage(float damage)
     {
+        Debug.Log("current life" + _currentLife);
+
+        _currentLife -= damage * _damagePercent;
+
         if (_currentLife <= 0)
         {
             _currentLife = 0;
@@ -41,15 +45,16 @@ public class HealthBase : MonoBehaviour, IHealth, IDamageable
             return;
         }
 
-        Debug.Log("current life" + _currentLife);
-
-        _currentLife -= damage * _damagePercent;
-
         Debug.Log("current life on damage" + _currentLife);
 
         UpdateLife(_currentLife);
 
         OnDamage?.Invoke();        
+    }
+
+    public void Destroy()
+    {
+        Damage(_currentLife);
     }
 
     public virtual void Kill()

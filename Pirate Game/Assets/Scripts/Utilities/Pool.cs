@@ -5,7 +5,9 @@ using UnityEngine;
 public enum PoolType
 {
     CannonBall,
-    Enemy
+    TripleCannonBall,
+    EnemyChaser,
+    EnemyShooter
 }
 
 public class Pool : MonoBehaviour

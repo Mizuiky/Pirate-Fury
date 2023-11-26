@@ -11,11 +11,11 @@ public class CannonBase : MonoBehaviour, ICannon
     protected KeyCode _shootKey;
 
     [SerializeField]
-    protected float timeBetweenShoots;
+    private PoolType _cannonBallType;
 
     private IEnable cannonBall;
 
-    protected Vector3 positionToShoot;
+    protected Transform positionToShoot;
 
     private void Update()
     {
@@ -30,16 +30,16 @@ public class CannonBase : MonoBehaviour, ICannon
 
     public virtual void Shoot()
     {
-        positionToShoot = _cannonPosition.position;
+        positionToShoot = _cannonPosition;
         StartShoot();
     }
 
     protected void StartShoot()
     {
-        cannonBall = GameManager.Instance.Pool.GetItem(PoolType.CannonBall);
+        cannonBall = GameManager.Instance.pool.GetItem(_cannonBallType);
 
         //shootParticle?.Play();
 
-        cannonBall?.Init(positionToShoot, _cannonPosition.rotation);          
+        cannonBall?.Init(positionToShoot.position, positionToShoot.rotation);          
     }
 }
