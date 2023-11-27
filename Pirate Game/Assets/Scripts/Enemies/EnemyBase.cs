@@ -8,11 +8,6 @@ public class EnemyBase : MonoBehaviour, IEnable
     protected HealthBase healthBase;
 
     [SerializeField]
-    protected ParticleSystem deathParticle;
-
-    protected ParticleSystem damageParticle;
-
-    [SerializeField]
     private float _timeToDestroy;
 
     [SerializeField]
@@ -42,21 +37,6 @@ public class EnemyBase : MonoBehaviour, IEnable
         
     }
 
-    protected virtual void OnDamage()
-    {
-        damageParticle?.Play();
-    }
-
-    protected virtual void OnDeath()
-    {
-        Debug.Log("Enemy death");
-        //death animation
-
-        deathParticle?.Play();
-
-        OnDisableEnemy();
-    }
-
     public virtual void Init(Vector3 position, Quaternion rotation)
     {
         transform.position = position;
@@ -67,13 +47,22 @@ public class EnemyBase : MonoBehaviour, IEnable
         _isActive = true;
     }
 
-    public void DisableComponent()
+    protected virtual void OnDamage()
     {
-        _isActive = false;
-        gameObject.SetActive(false);
+        //damage animation
     }
 
-    private void OnDisableEnemy()
+    protected virtual void OnDeath()
+    {
+        Debug.Log("Enemy death");
+        //death animation
+
+        Debug.Log("Explosion Animation!!!");
+
+        OnDisableEnemy();
+    }
+
+    public virtual void OnDisableEnemy()
     {
         StartCoroutine(DisableEnemy());
     }
@@ -83,5 +72,11 @@ public class EnemyBase : MonoBehaviour, IEnable
         yield return new WaitForSeconds(_timeToDestroy);
 
         DisableComponent();
+    }
+
+    public void DisableComponent()
+    {
+        _isActive = false;
+        gameObject.SetActive(false);
     }
 }

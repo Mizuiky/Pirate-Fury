@@ -48,5 +48,12 @@ public class EnemyChase : EnemyBase
 
         _isMoving = true;
     }
+
+    public override void OnDisableEnemy()
+    {
+        _isMoving = false;
+
+        base.OnDisableEnemy();
+    }
 }
 

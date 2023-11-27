@@ -44,6 +44,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3121135913706403799}
   - component: {fileID: 272997930498723425}
+  - component: {fileID: 4723158949544497996}
   m_Layer: 3
   m_Name: Flags
   m_TagString: Enemy
@@ -101,6 +102,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &4723158949544497996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019695221170911745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2f18f4ab0e2cf4aaa90097a30d37f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootReference: {fileID: 1576446198536488726}
+  _targetToCollide: Player
 --- !u!1 &1405211495645500654
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,8 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBase: {fileID: 4486446450677991383}
-  deathParticle: {fileID: 0}
-  _timeToDestroy: 5
+  _timeToDestroy: 0.6
   _damageValue: 3
   _speed: 3
 --- !u!114 &4486446450677991383
@@ -242,7 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startLife: 20
-  _damagePercent: 0.2
+  _damagePercent: 0.4
   healthSlider: {fileID: 1929615261685776140}
   _damageToDeal: 5
 --- !u!1 &2049814549578595400
@@ -791,6 +805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9039918457240128569}
   - component: {fileID: 594803504205832262}
+  - component: {fileID: 4976838645003065196}
   m_Layer: 3
   m_Name: Boat
   m_TagString: Enemy
@@ -848,6 +863,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.62, y: 1.69}
   m_Direction: 0
+--- !u!114 &4976838645003065196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8120088067125041501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2f18f4ab0e2cf4aaa90097a30d37f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootReference: {fileID: 1576446198536488726}
+  _targetToCollide: Player
 --- !u!1 &8425499881022022747
 GameObject:
   m_ObjectHideFlags: 0
