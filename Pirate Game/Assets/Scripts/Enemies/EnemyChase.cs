@@ -39,8 +39,12 @@ public class EnemyChase : EnemyBase
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("colidiu");
+
         if (collision.collider.CompareTag("Player"))
         {
+            Debug.Log("colidiu com o player");
+
             IDamageable collidedComponent = collision.gameObject.GetComponent<IDamageable>();
 
             if(collidedComponent != null)
