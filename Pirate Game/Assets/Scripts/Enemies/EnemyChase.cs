@@ -15,6 +15,8 @@ public class EnemyChase : EnemyBase
 
     private bool _isMoving;
 
+    public bool IsMoving { get { return _isMoving; } set { _isMoving = value; } }
+
     private void Update()
     {
         if (IsActive)
@@ -33,27 +35,6 @@ public class EnemyChase : EnemyBase
                 Quaternion desiredRotation = Quaternion.LookRotation(Vector3.forward, _direction);
 
                 transform.rotation = desiredRotation;
-            }
-        }
-    }
-
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("colidiu");
-
-        if (collision.collider.CompareTag("Player"))
-        {
-            Debug.Log("colidiu com o player");
-
-            IDamageable collidedComponent = collision.gameObject.GetComponent<IDamageable>();
-
-            if(collidedComponent != null)
-            {
-                collidedComponent?.Destroy();
-
-                healthBase.Destroy();
-
-                _isMoving = false;
             }
         }
     }

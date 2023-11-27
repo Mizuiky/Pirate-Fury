@@ -63,8 +63,7 @@ public class GameManager : MonoBehaviour
             {
                 _playerBoat.Init(_playerStartPosition.position);
                 _playerBoat.OnPlayerDeath += ShowEndGame;
-            }
-                
+            }             
         }           
     }
 

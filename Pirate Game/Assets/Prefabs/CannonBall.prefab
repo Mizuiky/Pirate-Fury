@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3667814582040595893}
   - component: {fileID: 6093975377560463791}
   - component: {fileID: 1592387185594275430}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CannonBall
-  m_TagString: Untagged
+  m_TagString: CannonBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,7 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeToDestroy: 5
   _speed: 7
-  _damage: 5
+  _damageValue: 3
+  _destroyParticle: {fileID: 0}
+  _hitBox: {fileID: 0}
 --- !u!58 &1592387185594275430
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -83,7 +85,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.08
+  m_Radius: 0.14
 --- !u!1 &2008063779204152091
 GameObject:
   m_ObjectHideFlags: 0

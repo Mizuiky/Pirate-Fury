@@ -44,7 +44,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3121135913706403799}
   - component: {fileID: 272997930498723425}
-  - component: {fileID: 2575365455154831366}
   m_Layer: 3
   m_Name: Flags
   m_TagString: Enemy
@@ -65,7 +64,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 958487465917591494}
+  m_Father: {fileID: 2183632360873371927}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &272997930498723425
 CircleCollider2D:
@@ -102,18 +101,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &2575365455154831366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019695221170911745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74d8d3666159a9548a6f6f5f7674b5be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1405211495645500654
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,8 +207,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 9039918457240128569}
-  - {fileID: 3121135913706403799}
+  - {fileID: 2183632360873371927}
   - {fileID: 2896624890526641609}
   - {fileID: 2542542453697335306}
   m_Father: {fileID: 0}
@@ -241,6 +227,7 @@ MonoBehaviour:
   healthBase: {fileID: 4486446450677991383}
   deathParticle: {fileID: 0}
   _timeToDestroy: 5
+  _damageValue: 3
   _speed: 3
 --- !u!114 &4486446450677991383
 MonoBehaviour:
@@ -257,6 +244,7 @@ MonoBehaviour:
   _startLife: 20
   _damagePercent: 0.2
   healthSlider: {fileID: 1929615261685776140}
+  _damageToDeal: 5
 --- !u!1 &2049814549578595400
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,6 +320,39 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &2435792202350764225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2183632360873371927}
+  m_Layer: 3
+  m_Name: Colliders
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2183632360873371927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2435792202350764225}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 9039918457240128569}
+  - {fileID: 3121135913706403799}
+  m_Father: {fileID: 958487465917591494}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3585359061139825242
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,7 +791,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9039918457240128569}
   - component: {fileID: 594803504205832262}
-  - component: {fileID: 6547771638277340099}
   m_Layer: 3
   m_Name: Boat
   m_TagString: Enemy
@@ -791,7 +811,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 958487465917591494}
+  m_Father: {fileID: 2183632360873371927}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &594803504205832262
 CapsuleCollider2D:
@@ -828,18 +848,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.62, y: 1.69}
   m_Direction: 0
---- !u!114 &6547771638277340099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8120088067125041501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74d8d3666159a9548a6f6f5f7674b5be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8425499881022022747
 GameObject:
   m_ObjectHideFlags: 0

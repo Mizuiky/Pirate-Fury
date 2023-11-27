@@ -6,6 +6,8 @@ public interface IDamageable
 {
     public void Damage(float damage);
 
+    public float TotalDamageToDeal { get; }
+
     public void Destroy();
 
     public void Kill();

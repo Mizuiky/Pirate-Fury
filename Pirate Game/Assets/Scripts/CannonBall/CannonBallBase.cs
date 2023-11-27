@@ -11,10 +11,16 @@ public class CannonBallBase : MonoBehaviour, IEnable
     private float _speed;
 
     [SerializeField]
-    private float _damage;
+    private float _damageValue;
+
+    public float DamageValue { get { return _damageValue; } }
+
+    [Space(10)]
 
     [SerializeField]
     private ParticleSystem _destroyParticle;
+
+    [Space(10)]
 
     private bool _isActive;
 
@@ -47,29 +53,20 @@ public class CannonBallBase : MonoBehaviour, IEnable
         transform.position = position;
 
         transform.localRotation = rotation;
-       
+
         gameObject.SetActive(true);
 
         _isActive = true;     
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        IDamageable collidedComponent = collision.gameObject.GetComponent<IDamageable>();
-
-        collidedComponent?.Damage(_damage);
-
-        Deactivate();
-    }
-
     private void Deactivate()
     {
-        StartCoroutine(DestroyBallCoroutine());
+        StartCoroutine(DisableBallCoroutine());
 
         DisableComponent();
     }
 
-    private IEnumerator DestroyBallCoroutine()
+    private IEnumerator DisableBallCoroutine()
     {
         _destroyParticle?.Play();
 

@@ -243,9 +243,9 @@ GameObject:
   - component: {fileID: 7528111730315804421}
   - component: {fileID: 4930416259358331376}
   - component: {fileID: 344595814512055066}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TripleCannonBall
-  m_TagString: Untagged
+  m_TagString: CannonBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -280,7 +280,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timeToDestroy: 7
   _speed: 3
-  _damage: 2
+  _damageValue: 2
+  _destroyParticle: {fileID: 0}
+  _hitBox: {fileID: 0}
   _cannonBalls:
   - {fileID: 5350660460546318346}
   - {fileID: 3845936338120575348}

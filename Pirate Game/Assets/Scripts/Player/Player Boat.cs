@@ -16,6 +16,8 @@ public class PlayerBoat : MonoBehaviour
     [SerializeField]
     private Transform _startPosition;
 
+    public HealthBase Health { get { return _healthBase; } }
+
     public Action OnPlayerDeath;
 
     protected ParticleSystem deathParticle;
@@ -26,13 +28,14 @@ public class PlayerBoat : MonoBehaviour
 
     public void Update()
     {
+        //Test
         if (Input.GetKeyDown(KeyCode.L))
             _healthBase.Damage(2f);
     }
 
     public void Init(Vector3 startPosition)
     {
-        if(_healthBase != null)
+        if (_healthBase != null)
         {
             _healthBase.OnKill += OnDeath;
             _healthBase.OnDamage += OnDamage;

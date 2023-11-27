@@ -14,9 +14,14 @@ public class HealthBase : MonoBehaviour, IHealth, IDamageable
     [SerializeField]
     private SliderBase healthSlider;
 
+    [SerializeField]
+    private float _damageToDeal;
+
     private float _currentLife;
 
     public float CurrentLife { get { return _currentLife; } }
+
+    public float TotalDamageToDeal { get { return _damageToDeal * _damagePercent; } }
 
     public Action OnKill;
     public Action OnDamage;
@@ -32,7 +37,7 @@ public class HealthBase : MonoBehaviour, IHealth, IDamageable
     {
         Debug.Log("current life" + _currentLife);
 
-        _currentLife -= damage * _damagePercent;
+        _currentLife -= damage;
 
         if (_currentLife <= 0)
         {

@@ -15,6 +15,9 @@ public class EnemyBase : MonoBehaviour, IEnable
     [SerializeField]
     private float _timeToDestroy;
 
+    [SerializeField]
+    private float _damageValue;
+
     private bool _isActive;
     public bool IsActive { get { return _isActive; } }
 

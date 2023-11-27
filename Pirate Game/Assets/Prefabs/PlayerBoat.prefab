@@ -144,6 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3609800552285474640}
   - component: {fileID: 1461536127909846800}
+  - component: {fileID: 1069607230397159571}
   m_Layer: 6
   m_Name: Boat
   m_TagString: Player
@@ -164,7 +165,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 673624689348654356}
+  m_Father: {fileID: 7786708916616920561}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &1461536127909846800
 CapsuleCollider2D:
@@ -201,6 +202,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.62, y: 1.69}
   m_Direction: 0
+--- !u!114 &1069607230397159571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046807301612678167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3fd20d47dadadd4aa5fee020713f6b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootReference: {fileID: 4739245609152150769}
+  _targetToCollide: Enemy
 --- !u!1 &2360996539077787877
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,8 +771,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3609800552285474640}
-  - {fileID: 8784627761628991069}
+  - {fileID: 7786708916616920561}
   - {fileID: 1578246324389963203}
   - {fileID: 3236268224722697928}
   - {fileID: 4556137068109861655}
@@ -806,8 +820,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startLife: 20
-  _damagePercent: 1
+  _damagePercent: 0.8
   healthSlider: {fileID: 4070844411565613253}
+  _damageToDeal: 2
 --- !u!50 &4989700437247984382
 Rigidbody2D:
   serializedVersion: 4
@@ -845,6 +860,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8784627761628991069}
   - component: {fileID: 4312170688909490678}
+  - component: {fileID: 3792260656622734855}
   m_Layer: 6
   m_Name: Flags
   m_TagString: Player
@@ -865,7 +881,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 673624689348654356}
+  m_Father: {fileID: 7786708916616920561}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &4312170688909490678
 CircleCollider2D:
@@ -902,6 +918,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &3792260656622734855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4918000502909254045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3fd20d47dadadd4aa5fee020713f6b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootReference: {fileID: 4739245609152150769}
+  _targetToCollide: Enemy
 --- !u!1 &5805026699894965067
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,6 +1016,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6045182357718011637
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7786708916616920561}
+  m_Layer: 6
+  m_Name: Colliders
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7786708916616920561
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6045182357718011637}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3609800552285474640}
+  - {fileID: 8784627761628991069}
+  m_Father: {fileID: 673624689348654356}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6908108938981887898
 GameObject:
   m_ObjectHideFlags: 0
