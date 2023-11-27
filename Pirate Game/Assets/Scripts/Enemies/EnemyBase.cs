@@ -10,8 +10,7 @@ public class EnemyBase : MonoBehaviour, IEnable
     [SerializeField]
     private float _timeToDestroy;
 
-    [SerializeField]
-    private float _damageValue;
+    protected Transform target;
 
     private bool _isActive;
     public bool IsActive { get { return _isActive; } }
@@ -41,6 +40,8 @@ public class EnemyBase : MonoBehaviour, IEnable
     {
         transform.position = position;
         transform.rotation = rotation;
+
+        target = GameManager.Instance.PlayerBoat.PlayerPosition;
 
         gameObject.SetActive(true);
 

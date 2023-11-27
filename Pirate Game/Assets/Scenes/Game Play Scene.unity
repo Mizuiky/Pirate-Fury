@@ -206,6 +206,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pool
       objectReference: {fileID: 0}
+    - target: {fileID: 8927225237782924812, guid: c06552defe969014c874bdd10d9ef279, type: 3}
+      propertyPath: _pools.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8927225237782924812, guid: c06552defe969014c874bdd10d9ef279, type: 3}
+      propertyPath: _pools.Array.data[3].size
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8927225237782924812, guid: c06552defe969014c874bdd10d9ef279, type: 3}
+      propertyPath: _pools.Array.data[3].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8927225237782924812, guid: c06552defe969014c874bdd10d9ef279, type: 3}
+      propertyPath: _pools.Array.data[3].parent
+      value: 
+      objectReference: {fileID: 1376803253}
+    - target: {fileID: 8927225237782924812, guid: c06552defe969014c874bdd10d9ef279, type: 3}
+      propertyPath: _pools.Array.data[3].prefab
+      value: 
+      objectReference: {fileID: 3732637818610079101, guid: 2f068774439112946829954631d62106, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -776,6 +796,11 @@ RectTransform:
   m_AnchoredPosition: {x: -612.25146, y: 488.27023}
   m_SizeDelta: {x: 565.543, y: 115.39}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!4 &1376803253 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8245175171640718926, guid: c06552defe969014c874bdd10d9ef279, type: 3}
+  m_PrefabInstance: {fileID: 272382595}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1404605877
 GameObject:
   m_ObjectHideFlags: 0

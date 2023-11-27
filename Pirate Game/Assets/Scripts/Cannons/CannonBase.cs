@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,40 +6,60 @@ using UnityEngine;
 public class CannonBase : MonoBehaviour, ICannon
 {
     [SerializeField]
-    protected Transform _cannonPosition;
+    protected Transform _firingPosition;
 
     [SerializeField]
-    protected KeyCode _shootKey;
+    private float _timeBetweenShoots;
 
-    [SerializeField]
     private PoolType _cannonBallType;
 
     private IEnable cannonBall;
 
+    private Coroutine _currentCoroutine;
+
     protected Transform positionToShoot;
 
-    private void Update()
+    public bool isShooting;
+
+    private void Start()
     {
-        ShootInput();
+        Init();
     }
 
-    protected virtual void ShootInput()
+    private void Init()
     {
-        if (Input.GetKeyDown(_shootKey))
+        _currentCoroutine = null;
+    }
+
+    public void StartShoot(PoolType cannonBallType)
+    {
+        _cannonBallType = cannonBallType;
+
+        positionToShoot = _firingPosition;
+
+        if (_currentCoroutine != null)
+            StopCoroutine(_currentCoroutine);
+
+        isShooting = true;
+        _currentCoroutine = StartCoroutine(ShootCoroutine());
+        
+    }
+
+    private IEnumerator ShootCoroutine()
+    {
+        while(isShooting)
+        {
             Shoot();
+
+            yield return new WaitForSeconds(_timeBetweenShoots);
+        }                   
     }
 
     public virtual void Shoot()
     {
-        positionToShoot = _cannonPosition;
-        StartShoot();
-    }
-
-    protected void StartShoot()
-    {
         cannonBall = GameManager.Instance.pool.GetItem(_cannonBallType);
 
-        //shootParticle?.Play();
+        //ShootExplosion
 
         cannonBall?.Init(positionToShoot.position, positionToShoot.rotation);          
     }

@@ -9,21 +9,21 @@ public class CannonRate : CannonBase
     [SerializeField]
     protected float timeBetweenShoots;
 
-    protected override void ShootInput()
-    {
-        if (Input.GetKey(_shootKey) && !_isShooting)
-            Shoot();
+    //protected override void ShootInput()
+    //{
+    //    if (Input.GetKey(_shootKey) && !_isShooting)
+    //        Shoot();
 
-        else if (Input.GetKeyUp(_shootKey))
-            _isShooting = false;
-    }
+    //    else if (Input.GetKeyUp(_shootKey))
+    //        _isShooting = false;
+    //}
 
-    public override void Shoot()
-    {
-        _isShooting = true;
+    //public override void Shoot()
+    //{
+    //    _isShooting = true;
 
-        StartCoroutine(ShootCoroutine());
-    }
+    //    StartCoroutine(ShootCoroutine());
+    //}
 
     private IEnumerator ShootCoroutine()
     {

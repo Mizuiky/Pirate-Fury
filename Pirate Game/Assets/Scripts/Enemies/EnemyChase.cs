@@ -11,8 +11,6 @@ public class EnemyChase : EnemyBase
 
     private Vector2 _direction;
 
-    private Transform target;
-
     private bool _isMoving;
 
     public bool IsMoving { get { return _isMoving; } set { _isMoving = value; } }
@@ -43,8 +41,6 @@ public class EnemyChase : EnemyBase
     {
 
         base.Init(position, rotation);
-
-        target = GameManager.Instance.PlayerBoat.PlayerPosition;
 
         _isMoving = true;
     }
