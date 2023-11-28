@@ -33,23 +33,16 @@ public class EnemyShooter : EnemyBase
             transform.rotation = desiredRotation;
 
             if (Vector3.Distance(transform.position, target.position) <= _distanceToShoot)
-            {
-                Debug.Log("distance <");
                 _canShoot = true;
-            }
+
             else
             {
-
-                Debug.Log("distance NOT <");
                 _canShoot = false;
                 _cannon.isShooting = false;
             }
                
             if (_canShoot && !_cannon.isShooting)
-            {
-                Debug.Log("can shoot");
-                _cannon.StartShoot(_cannonBallType);
-            }              
+                _cannon.StartShoot(_cannonBallType);          
         }       
     }
 
