@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public Pool pool;
+
     [SerializeField]
     private GameObject _playerPrefab;
 
@@ -19,7 +21,13 @@ public class GameManager : MonoBehaviour
 
     private PlayerBoat _playerBoat;
 
-    public Pool pool;
+    public SaveController SaveController { get { return _saveController; } }
+
+    private SaveController _saveController;
+
+    private WorldController _worldController;
+
+    public WorldController WorldController { get { return _worldController; } }
 
     private void Awake()
     {
@@ -48,6 +56,8 @@ public class GameManager : MonoBehaviour
         if(pool != null)
             pool.InitPool();
 
+        _worldController = new WorldController();
+
         StartPlayer();
     }
 
@@ -55,16 +65,13 @@ public class GameManager : MonoBehaviour
     {
         GameObject player = Instantiate(_playerPrefab, _playerStartPosition);
 
-        if(player != null)
+        if (player != null)
         {
             _playerBoat = player.GetComponent<PlayerBoat>();
 
             if (_playerBoat != null)
-            {
                 _playerBoat.Init(_playerStartPosition.position);
-                _playerBoat.OnPlayerDeath += ShowEndGame;
-            }             
-        }           
+        }
     }
 
     private void ShowEndGame()
@@ -78,4 +85,9 @@ public class GameManager : MonoBehaviour
 
         enemy?.Init(_enemyStartPosition.position, _enemyStartPosition.rotation);
     }
+
+    //public <T> IntantiateComponent <T> (GameObject prefab, Transform parent) : Where T MonoBehaviour
+    //{
+    //    Instantiate(prefab, parent)
+    //}
 }
