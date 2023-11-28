@@ -559,7 +559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _firingPosition: {fileID: 1808163755651796445}
-  _timeBetweenShoots: 0.8
+  _timeBetweenShoots: 0.7
   isShooting: 0
 --- !u!1 &3685092212346291257
 GameObject:
@@ -693,7 +693,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBase: {fileID: 6479847890073708462}
   _timeToDestroy: 0.5
-  _distanceToShoot: 5
+  _distanceToShoot: 6
   _cannon: {fileID: 5451838800204633296}
   _cannonBallType: 0
 --- !u!114 &6479847890073708462

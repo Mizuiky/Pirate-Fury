@@ -1090,7 +1090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _firingPosition: {fileID: 2078552644299208891}
-  _timeBetweenShoots: 0.8
+  _timeBetweenShoots: 0.5
   isShooting: 0
 --- !u!1 &9118020828825761148
 GameObject:

@@ -26,17 +26,30 @@ public class EnemyShooter : EnemyBase
             _direction = target.position - transform.position;
             _direction.Normalize();
 
-            Debug.DrawRay(transform.position, _direction * 40, Color.magenta);
+            Debug.DrawRay(transform.position, _direction * 20, Color.magenta);
 
             Quaternion desiredRotation = Quaternion.LookRotation(Vector3.forward, _direction);
 
             transform.rotation = desiredRotation;
 
             if (Vector3.Distance(transform.position, target.position) <= _distanceToShoot)
+            {
+                Debug.Log("distance <");
                 _canShoot = true;
+            }
+            else
+            {
 
-            if (_canShoot)
+                Debug.Log("distance NOT <");
+                _canShoot = false;
+                _cannon.isShooting = false;
+            }
+               
+            if (_canShoot && !_cannon.isShooting)
+            {
+                Debug.Log("can shoot");
                 _cannon.StartShoot(_cannonBallType);
+            }              
         }       
     }
 
