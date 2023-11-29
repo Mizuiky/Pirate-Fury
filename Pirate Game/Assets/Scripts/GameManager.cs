@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
     private WorldController _worldController;
     public WorldController WorldController { get { return _worldController; } }
 
-
     private SaveController _saveController;
     public SaveController SaveController { get { return _saveController; } }
 
@@ -62,11 +61,6 @@ public class GameManager : MonoBehaviour
         {
             InstantiateEnemy();
         }
-
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            _worldController.Clock.isActive = false;
-        }
     }
 
     private void Init()
@@ -76,21 +70,17 @@ public class GameManager : MonoBehaviour
 
         StartPlayer();
 
+        _saveController = new SaveController();
+
         if (_playerBoat != null)
             _playerBoat.OnPlayerDeath += OnEndGame;
 
         _collisionManager = new CollisionManager();
         _collisionManager.Init();
 
-        _saveController = new SaveController();
-
         _worldController = new WorldController();
 
-        _saveController.Load();
-
-        _worldController.Init();
-
-        _UIController.Init();        
+        _UIController.Init();
     }
 
     public void Restart()

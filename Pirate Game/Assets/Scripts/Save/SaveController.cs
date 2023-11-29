@@ -7,7 +7,7 @@ public class SaveController
 {
     private SaveData _saveData;
 
-    public Action<SaveData> OnLoadData;
+    public SaveData Data { get { return _saveData; } }
 
     public SaveController()
     {
@@ -22,17 +22,12 @@ public class SaveController
 
     public void Load()
     {
-        LoadData();
-    }
-
-    private void LoadData()
-    {
-        OnLoadData?.Invoke(_saveData);
+        
     }
 
     private SaveData MockSaveData(SaveData data)
     {
-        data.maxClockTime = 1;
+        data.maxClockTime = 1f;
         data.defaultEnemySpawnTime = 2f;
 
         return data;

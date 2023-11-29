@@ -12,10 +12,10 @@ public class UIController : MonoBehaviour
 
     public void Init()
     {
-        _hud.Init();
-
         GameManager.Instance.WorldController.ScoreController.OnUpdateScore += OnUpdateScore;
-        GameManager.Instance.WorldController.Clock.OnTimeUpdate += OnUpdateTimer;
+
+        _hud.Init(GameManager.Instance.SaveController.Data.maxClockTime);
+
     }
 
     public void Reset()
@@ -27,11 +27,6 @@ public class UIController : MonoBehaviour
     private void OnUpdateScore(int points)
     {
         _hud.UpdateScore(points);
-    }
-
-    private void OnUpdateTimer(string time)
-    {
-        _hud.UpdateTimer(time);
     }
 
     public void OpenEndPanel()

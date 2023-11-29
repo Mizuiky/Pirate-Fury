@@ -9,7 +9,7 @@ public class HUD : MonoBehaviour
     [Header("Timer")]
 
     [SerializeField]
-    private TextMeshProUGUI _timer;
+    private Timer _timer;
 
     [Space(10)]
 
@@ -21,9 +21,10 @@ public class HUD : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _score;
 
-    public void Init()
+    public void Init(float maxTimer)
     {
         Reset();
+        _timer.Init(maxTimer);
     }
 
     public void UpdateScore(int points)
@@ -31,14 +32,9 @@ public class HUD : MonoBehaviour
         _score.text = points.ToString();
     }
 
-    public void UpdateTimer(string clock)
-    {
-        _timer.text = clock;
-    }
-
     public void Reset()
     {
-        _timer.text = "00 : 00";
+        _timer.Reset();
 
         _score.text = "0";
     }
