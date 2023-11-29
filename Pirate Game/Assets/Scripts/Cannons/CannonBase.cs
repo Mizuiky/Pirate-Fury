@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CannonBase : MonoBehaviour, ICannon
+public class CannonBase : MonoBehaviour
 {
     [SerializeField]
     protected Transform _firingPosition;

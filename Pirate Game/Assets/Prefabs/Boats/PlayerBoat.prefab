@@ -156,7 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3609800552285474640}
   - component: {fileID: 1461536127909846800}
-  - component: {fileID: 1069607230397159571}
+  - component: {fileID: 6064541812843417192}
   m_Layer: 6
   m_Name: Boat
   m_TagString: Player
@@ -214,7 +214,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.62, y: 1.69}
   m_Direction: 0
---- !u!114 &1069607230397159571
+--- !u!114 &6064541812843417192
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -223,11 +223,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2046807301612678167}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3fd20d47dadadd4aa5fee020713f6b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 5de474f292f2529478962faca2a1c7b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rootReference: {fileID: 4739245609152150769}
-  _targetToCollide: Enemy
+  rootComponent: {fileID: 4739245609152150769}
+  colliderComponent: {fileID: 1461536127909846800}
 --- !u!1 &2360996539077787877
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,6 +755,11 @@ MonoBehaviour:
   _cannon: {fileID: 5920870911275465243}
   _input: {fileID: 5324663418163874469}
   _startPosition: {fileID: 3236268224722697928}
+  _collisions:
+  - {fileID: 6064541812843417192}
+  - {fileID: 6349537258934959536}
+  type: 0
+  HasCollided: 0
 --- !u!114 &814742196167125085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -823,7 +828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8784627761628991069}
   - component: {fileID: 4312170688909490678}
-  - component: {fileID: 3792260656622734855}
+  - component: {fileID: 6349537258934959536}
   m_Layer: 6
   m_Name: Flags
   m_TagString: Player
@@ -881,7 +886,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &3792260656622734855
+--- !u!114 &6349537258934959536
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -890,11 +895,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4918000502909254045}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3fd20d47dadadd4aa5fee020713f6b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 5de474f292f2529478962faca2a1c7b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rootReference: {fileID: 4739245609152150769}
-  _targetToCollide: Enemy
+  rootComponent: {fileID: 4739245609152150769}
+  colliderComponent: {fileID: 4312170688909490678}
 --- !u!1 &5805026699894965067
 GameObject:
   m_ObjectHideFlags: 0

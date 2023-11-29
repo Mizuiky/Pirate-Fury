@@ -1,21 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Timer
 {
-    private Clock _clock;
-
     private int _maxTime;
 
     private float _currentTime;
 
+    private string _timer;
+
     public bool isActive;
+
+    public Action<string> OnTimeUpdate;
 
     public Timer(int maxTime)
     {
-        _clock = new Clock();
-
         this._maxTime = maxTime;
 
         Reset();
@@ -27,7 +28,8 @@ public class Timer
 
         isActive = true;
 
-        StartTimer();
+        if(_maxTime > 0)
+            StartTimer();
     }
 
     private void StartTimer()
@@ -36,21 +38,14 @@ public class Timer
         {
             while (_currentTime < _maxTime)
             {
+                _currentTime += Time.deltaTime;
 
+                _timer = String.Format("H:mm", _currentTime);
+
+                Debug.Log(_timer);
+
+                OnTimeUpdate?.Invoke(_timer);
             }
         }      
-    }
-}
-
-
-public class Clock
-{
-    public float minutes;
-    public float seconds;
-
-    public void SetTime(float minutes, float seconds)
-    {
-        this.minutes = minutes;
-        this.seconds = seconds;
     }
 }

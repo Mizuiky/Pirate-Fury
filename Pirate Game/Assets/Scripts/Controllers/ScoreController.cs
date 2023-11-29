@@ -9,15 +9,20 @@ public class ScoreController
 
     public Action<int> OnUpdateScore;
 
-    private void Init()
+    public void Init()
     {
-        _points = 0;
+        Reset();
     }
 
-    private void AddPoints(int point)
+    public void AddPoints(int point)
     {
         _points += point;
 
         OnUpdateScore?.Invoke(_points);
+    }
+
+    public void Reset()
+    {
+        _points = 0;
     }
 }

@@ -44,10 +44,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3121135913706403799}
   - component: {fileID: 272997930498723425}
-  - component: {fileID: 4723158949544497996}
+  - component: {fileID: 178631204276961698}
   m_Layer: 3
   m_Name: Flags
-  m_TagString: Enemy
+  m_TagString: EnemyChaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,7 +102,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &4723158949544497996
+--- !u!114 &178631204276961698
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,11 +111,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1019695221170911745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d2f18f4ab0e2cf4aaa90097a30d37f4, type: 3}
+  m_Script: {fileID: 11500000, guid: 5de474f292f2529478962faca2a1c7b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rootReference: {fileID: 1576446198536488726}
-  _targetToCollide: Player
+  rootComponent: {fileID: 1576446198536488726}
+  colliders: {fileID: 2435792202350764225}
 --- !u!1 &1405211495645500654
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 4486446450677991383}
   m_Layer: 3
   m_Name: EnemyChase
-  m_TagString: Enemy
+  m_TagString: EnemyChaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,7 +239,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBase: {fileID: 4486446450677991383}
   _timeToDestroy: 0.6
-  _damageValue: 3
+  _pointsToGiveOnDeath: 1
+  colliders: {fileID: 2435792202350764225}
+  type: 1
   _speed: 3
 --- !u!114 &4486446450677991383
 MonoBehaviour:
@@ -343,7 +345,7 @@ GameObject:
   - component: {fileID: 2183632360873371927}
   m_Layer: 3
   m_Name: Colliders
-  m_TagString: Enemy
+  m_TagString: EnemyChaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -803,10 +805,10 @@ GameObject:
   m_Component:
   - component: {fileID: 9039918457240128569}
   - component: {fileID: 594803504205832262}
-  - component: {fileID: 4976838645003065196}
+  - component: {fileID: 5559853377628753469}
   m_Layer: 3
   m_Name: Boat
-  m_TagString: Enemy
+  m_TagString: EnemyChaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -861,7 +863,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.62, y: 1.69}
   m_Direction: 0
---- !u!114 &4976838645003065196
+--- !u!114 &5559853377628753469
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -870,11 +872,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8120088067125041501}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d2f18f4ab0e2cf4aaa90097a30d37f4, type: 3}
+  m_Script: {fileID: 11500000, guid: 5de474f292f2529478962faca2a1c7b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rootReference: {fileID: 1576446198536488726}
-  _targetToCollide: Player
+  rootComponent: {fileID: 1576446198536488726}
+  colliders: {fileID: 0}
 --- !u!1 &8425499881022022747
 GameObject:
   m_ObjectHideFlags: 0

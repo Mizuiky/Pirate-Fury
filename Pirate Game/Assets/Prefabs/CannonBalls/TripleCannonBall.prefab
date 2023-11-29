@@ -243,6 +243,7 @@ GameObject:
   - component: {fileID: 7528111730315804421}
   - component: {fileID: 4930416259358331376}
   - component: {fileID: 344595814512055066}
+  - component: {fileID: 5772965977604324975}
   m_Layer: 7
   m_Name: TripleCannonBall
   m_TagString: CannonBall
@@ -281,8 +282,9 @@ MonoBehaviour:
   _timeToDestroy: 7
   _speed: 3
   _damageValue: 2
-  _destroyParticle: {fileID: 0}
-  _hitBox: {fileID: 0}
+  _collisions:
+  - {fileID: 5772965977604324975}
+  type: 3
   _cannonBalls:
   - {fileID: 5350660460546318346}
   - {fileID: 3845936338120575348}
@@ -334,6 +336,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.0001, y: 0.0001}
   m_EdgeRadius: 0
+--- !u!114 &5772965977604324975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5915371667894321672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de474f292f2529478962faca2a1c7b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootComponent: {fileID: 5915371667894321672}
+  colliderComponent: {fileID: 344595814512055066}
 --- !u!1 &7000020022169545217
 GameObject:
   m_ObjectHideFlags: 0

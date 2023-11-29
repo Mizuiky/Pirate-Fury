@@ -7,37 +7,53 @@ public class WorldController
   
     private SpawnerController _spawnerController;
 
-    private Timer _timer;
+    private ScoreController _scoreController;
+    public ScoreController ScoreController { get { return _scoreController; } }
 
-    private int _maxTime;
-   
+    private Timer _clock;
+    public Timer Clock { get { return _clock; } }
+
+    private SaveData _data;
+
     public WorldController()
     {
-        GameManager.Instance.SaveController.OnLoadData += LoadData;
-        GameManager.Instance.PlayerBoat.OnPlayerDeath += StopWord;
+        if(GameManager.Instance.SaveController != null)
+            GameManager.Instance.SaveController.OnLoadData += LoadData;
 
-        _spawnerController = new SpawnerController();
+        if (GameManager.Instance.PlayerBoat != null)
+            GameManager.Instance.PlayerBoat.OnPlayerDeath += StopWord;
+    }
 
-        _timer = new Timer(_maxTime);
+    public void Init()
+    {
+        if (_data != null)
+        {
+            _spawnerController = new SpawnerController(_data.defaultEnemySpawnTime);
+            //start spawner
 
-        //start spawner
+            _clock = new Timer(_data.maxClockTime);
+        }
+
+        _scoreController = new ScoreController();
+        _scoreController.Init();
     }
 
     public void Reset()
     {
-        _timer.Reset();
+        _clock.Reset();
+        _scoreController.Reset();
 
         //reset spawner
     }
 
     private void LoadData(SaveData data)
     {
-        _maxTime = data.maxClockTime;
+        _data = data;
     }
 
     private void StopWord()
     {
-        _timer.isActive = false;
+        _clock.isActive = false;
 
         //stop spawner
     }

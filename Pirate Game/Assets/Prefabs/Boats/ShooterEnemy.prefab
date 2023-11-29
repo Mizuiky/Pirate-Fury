@@ -559,7 +559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _firingPosition: {fileID: 1808163755651796445}
-  _timeBetweenShoots: 0.7
+  _timeBetweenShoots: 1
   isShooting: 0
 --- !u!1 &3685092212346291257
 GameObject:
@@ -656,9 +656,9 @@ GameObject:
   - component: {fileID: 2411854529705759444}
   - component: {fileID: 910957593159748809}
   - component: {fileID: 6479847890073708462}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: ShooterEnemy
-  m_TagString: Enemy
+  m_TagString: EnemyShooter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -693,6 +693,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBase: {fileID: 6479847890073708462}
   _timeToDestroy: 0.5
+  _pointsToGiveOnDeath: 1
+  colliders: {fileID: 6633489135738456742}
+  type: 2
   _distanceToShoot: 6
   _cannon: {fileID: 5451838800204633296}
   _cannonBallType: 0
@@ -722,9 +725,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4322933931404313419}
   - component: {fileID: 8145484752264071488}
-  m_Layer: 3
+  - component: {fileID: 337581448784817528}
+  m_Layer: 8
   m_Name: Boat
-  m_TagString: Enemy
+  m_TagString: EnemyShooter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -779,6 +783,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.62, y: 1.69}
   m_Direction: 0
+--- !u!114 &337581448784817528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5260207363607948934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de474f292f2529478962faca2a1c7b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootComponent: {fileID: 3732637818610079101}
 --- !u!1 &5405525324848885225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,9 +1173,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6246841203213791251}
   - component: {fileID: 4983706507176749510}
-  m_Layer: 3
+  - component: {fileID: 1476002852709258352}
+  m_Layer: 8
   m_Name: Flags
-  m_TagString: Enemy
+  m_TagString: EnemyShooter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1213,6 +1231,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1476002852709258352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6622401720416774386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de474f292f2529478962faca2a1c7b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootComponent: {fileID: 3732637818610079101}
 --- !u!1 &6633489135738456742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,9 +1253,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6664191789936419567}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Colliders
-  m_TagString: Enemy
+  m_TagString: EnemyShooter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

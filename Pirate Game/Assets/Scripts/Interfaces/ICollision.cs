@@ -4,7 +4,5 @@ using UnityEngine;
 
 public interface ICollision
 {
-    public string TargetToCollide { get; set; }
-
-    public void OnCollision();
+    public bool HasCollided { get; set; }
 }

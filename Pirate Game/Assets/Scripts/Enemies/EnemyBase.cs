@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBase : MonoBehaviour, IEnable
+public class EnemyBase : MonoBehaviour, IEnable, ICollision
 {
     [SerializeField]
     protected HealthBase healthBase;
@@ -10,10 +10,25 @@ public class EnemyBase : MonoBehaviour, IEnable
     [SerializeField]
     private float _timeToDestroy;
 
+    [SerializeField]
+    private int _pointsToGiveOnDeath;
+
+    //[SerializeField]
+    //private CollisionBase [] _collisions;
+
+    [SerializeField]
+    public GameObject colliders;
+
+    private bool _hasCollided;
+    public bool HasCollided { get { return _hasCollided; } set { _hasCollided = value; } }
+
+    public ComponentType type;
+
     protected Transform target;
 
     private bool _isActive;
     public bool IsActive { get { return _isActive; } }
+    public bool Health { get { return healthBase; } }
 
     private void Start()
     {
@@ -33,7 +48,13 @@ public class EnemyBase : MonoBehaviour, IEnable
 
     private void Reset()
     {
-        
+        healthBase.Reset();
+
+        colliders.SetActive(true);
+
+        //EnableColliders(true);
+
+        _hasCollided = false;
     }
 
     public virtual void Init(Vector3 position, Quaternion rotation)
@@ -41,11 +62,30 @@ public class EnemyBase : MonoBehaviour, IEnable
         transform.position = position;
         transform.rotation = rotation;
 
-        target = GameManager.Instance.PlayerBoat.PlayerPosition;
+        this.target = GameManager.Instance.PlayerBoat.transform;
+
+        healthBase.Reset();
+
+        colliders.SetActive(true);
+
+        //EnableColliders(true);
 
         gameObject.SetActive(true);
 
         _isActive = true;
+
+        _hasCollided = false;
+    }
+
+    public void EnableColliders(bool enable)
+    {
+
+        //foreach (CollisionBase collision in _collisions)
+        //{
+        //    collision.colliderComponent.gameObject.SetActive(enable);
+
+        //    Debug.Log("enabled colliders " + gameObject.tag + collision.colliderComponent.gameObject.activeInHierarchy);
+        //}
     }
 
     protected virtual void OnDamage()
@@ -60,12 +100,21 @@ public class EnemyBase : MonoBehaviour, IEnable
 
         Debug.Log("Explosion Animation!!!");
 
+        _hasCollided = true;
+
+        colliders.SetActive(false);
+
+        //EnableColliders(false);
+
+        GameManager.Instance.WorldController.ScoreController.AddPoints(_pointsToGiveOnDeath);
+
         OnDisableEnemy();
     }
 
     public virtual void OnDisableEnemy()
     {
-        StartCoroutine(DisableEnemy());
+        DisableComponent();
+        //StartCoroutine(DisableEnemy());
     }
 
     private IEnumerator DisableEnemy()
@@ -77,6 +126,7 @@ public class EnemyBase : MonoBehaviour, IEnable
 
     public void DisableComponent()
     {
+
         _isActive = false;
         gameObject.SetActive(false);
     }

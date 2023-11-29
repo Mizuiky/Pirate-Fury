@@ -31,6 +31,8 @@ public class HealthBase : MonoBehaviour, IHealth, IDamageable
         _currentLife = _startLife;
 
         healthSlider.Init(_startLife);
+
+        UpdateLife(_currentLife);
     }
 
     public virtual void Damage(float damage)

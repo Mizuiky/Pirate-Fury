@@ -20,11 +20,18 @@ public class PlayerBoat : MonoBehaviour
     [SerializeField]
     private Transform _startPosition;
 
+    [SerializeField]
+    private CollisionBase[] _collisions;
+
+    public ComponentType type;
+
     public HealthBase Health { get { return _healthBase; } }
 
     public Action OnPlayerDeath;
 
     public Transform PlayerPosition { get { return transform; } }
+
+    public bool HasCollided = false;
 
     public void Update()
     {
@@ -41,14 +48,31 @@ public class PlayerBoat : MonoBehaviour
             _healthBase.Reset();
         }
 
+        EnableCollisions(true);
+
         _move?.Init();
 
         transform.position = startPosition;
     }
 
-    private void Reset()
+    public void Reset()
     {
+        EnableCollisions(true);
 
+        //reset player position
+        //reset player health
+        //reset player animation
+        //set is moving
+    }
+
+    public void EnableCollisions(bool enable)
+    {
+        //foreach (CollisionBase collision in _collisions)
+        //{
+        //    collision.colliderComponent.gameObject.SetActive(enable);
+
+        //    Debug.Log("enabled colliders " + gameObject.tag +  collision.colliderComponent.gameObject.activeInHierarchy);
+        //}
     }
 
     private void PlayerInput()
@@ -70,7 +94,7 @@ public class PlayerBoat : MonoBehaviour
 
     private void OnDamage()
     {
-
+        //damage animation
     }
 
     private void OnDeath()
@@ -78,6 +102,8 @@ public class PlayerBoat : MonoBehaviour
         Debug.Log("OnPlayerDeath");
 
         _move.isMoving = false;
+
+        EnableCollisions(false);
 
         //death animation
 

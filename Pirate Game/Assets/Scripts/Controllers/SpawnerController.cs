@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnerController : MonoBehaviour
+public class SpawnerController
 {
-    // Start is called before the first frame update
-    void Start()
+    private float _timeToSpawn;
+    public SpawnerController(float timeBetweenEnemies)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _timeToSpawn = timeBetweenEnemies;
     }
 }

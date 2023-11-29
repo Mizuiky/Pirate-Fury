@@ -521,6 +521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1152744551}
   - component: {fileID: 1152744553}
+  - component: {fileID: 1152744554}
   m_Layer: 5
   m_Name: EndGamePanel
   m_TagString: Untagged
@@ -557,6 +558,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1152744550}
   m_CullTransparentMesh: 1
+--- !u!114 &1152744554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152744550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 624ae9c5196a5df49a07dbab3e3892e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _endPanel: {fileID: 1152744550}
 --- !u!1 &1217644151
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,9 +758,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pool: {fileID: 272382597}
-  _playerPrefab: {fileID: 0}
-  _playerStartPosition: {fileID: 0}
-  _enemyStartPosition: {fileID: 0}
+  _playerPrefab: {fileID: 4739245609152150769, guid: fd036cb9f66d2b94291a4426c49a24ee, type: 3}
+  _playerStartPosition: {fileID: 181190510}
+  _enemyStartPosition: {fileID: 1637162437}
+  _UIController: {fileID: 1543552756}
+  _battleControlller: {fileID: 0}
 --- !u!1 &1543552754
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,6 +772,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1543552755}
+  - component: {fileID: 1543552756}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -784,6 +801,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1543552756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543552754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e2c6e88e62c24e4ab127b7168fe2788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hud: {fileID: 3138101826113965142}
+  _endGamePanel: {fileID: 1152744554}
 --- !u!1 &1637162436
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,6 +1025,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3473058411367624235, guid: f8b2d62c28e322b4985c46de45e31dba, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473058411367624235, guid: f8b2d62c28e322b4985c46de45e31dba, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473058411367624235, guid: f8b2d62c28e322b4985c46de45e31dba, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473058411367624235, guid: f8b2d62c28e322b4985c46de45e31dba, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4346727433440968868, guid: f8b2d62c28e322b4985c46de45e31dba, type: 3}
       propertyPath: m_Name
       value: HUD
@@ -1115,6 +1162,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8b2d62c28e322b4985c46de45e31dba, type: 3}
+--- !u!114 &3138101826113965142 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4562583373578646905, guid: f8b2d62c28e322b4985c46de45e31dba, type: 3}
+  m_PrefabInstance: {fileID: 3138101826113965141}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f893cffbc4038240887bf4fe43eeec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
