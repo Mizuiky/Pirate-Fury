@@ -9,6 +9,8 @@ public class ScoreController
 
     public Action<int> OnUpdateScore;
 
+    public int Points { get { return _points; } }
+
     public void Init()
     {
         Reset();

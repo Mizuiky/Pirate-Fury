@@ -68,6 +68,15 @@ public class CannonBallBase : MonoBehaviour, IEnable, ICollision
         _hasCollided = false;
     }
 
+    public void Reset()
+    {
+        DisableComponent();
+
+        EnableColliders(false);
+
+        _hasCollided = false;
+    }
+
     public void EnableColliders(bool enable)
     {
         //foreach (CollisionBase collision in _collisions)
@@ -80,10 +89,14 @@ public class CannonBallBase : MonoBehaviour, IEnable, ICollision
 
     public void OnCollision()
     {
-    
-        StartCoroutine(DisableBallCoroutine());
+        if(!_hasCollided)
+        {
+            _hasCollided = true;
 
-        DisableComponent();
+            StartCoroutine(DisableBallCoroutine());
+
+            DisableComponent();
+        }       
     }
 
     private IEnumerator DisableBallCoroutine()

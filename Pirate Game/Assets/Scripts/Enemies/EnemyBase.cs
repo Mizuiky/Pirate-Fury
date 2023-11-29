@@ -46,15 +46,18 @@ public class EnemyBase : MonoBehaviour, IEnable, ICollision
         
     }
 
-    private void Reset()
+    public void Reset()
     {
         healthBase.Reset();
 
-        colliders.SetActive(true);
-
-        //EnableColliders(true);
+        EnableColliders(false);
 
         _hasCollided = false;
+
+        GameManager.Instance.PlayerBoat.OnPlayerDeath += OnDisableEnemy;
+        Timer.OnTimerIsOver += OnDisableEnemy;
+
+        DisableComponent();
     }
 
     public virtual void Init(Vector3 position, Quaternion rotation)
@@ -64,17 +67,20 @@ public class EnemyBase : MonoBehaviour, IEnable, ICollision
 
         this.target = GameManager.Instance.PlayerBoat.transform;
 
+        GameManager.Instance.PlayerBoat.OnPlayerDeath += OnDisableEnemy;
+        Timer.OnTimerIsOver += OnDisableEnemy;
+
+        _hasCollided = false;
+
         healthBase.Reset();
 
         colliders.SetActive(true);
 
-        //EnableColliders(true);
+        EnableColliders(true);
 
         gameObject.SetActive(true);
 
         _isActive = true;
-
-        _hasCollided = false;
     }
 
     public void EnableColliders(bool enable)
@@ -98,17 +104,20 @@ public class EnemyBase : MonoBehaviour, IEnable, ICollision
         Debug.Log("Enemy death");
         //death animation
 
-        Debug.Log("Explosion Animation!!!");
+        if(!_hasCollided)
+        {
+            Debug.Log("Explosion Animation!!!");
 
-        _hasCollided = true;
+            _hasCollided = true;
 
-        colliders.SetActive(false);
+            colliders.SetActive(false);
 
-        //EnableColliders(false);
+            //EnableColliders(false);
 
-        GameManager.Instance.WorldController.ScoreController.AddPoints(_pointsToGiveOnDeath);
+            GameManager.Instance.WorldController.ScoreController.AddPoints(_pointsToGiveOnDeath);
 
-        OnDisableEnemy();
+            OnDisableEnemy();
+        }      
     }
 
     public virtual void OnDisableEnemy()

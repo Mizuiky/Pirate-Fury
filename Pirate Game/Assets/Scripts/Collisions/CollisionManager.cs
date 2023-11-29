@@ -36,58 +36,63 @@ public class CollisionManager
             Debug.Log(e);
         }
        
-        _currentRootComponent = rootComponent;
-        _currentCollidedObject = collidedObject;
-       
         switch (_currentRootComponentTag)
         {
             case ComponentType.Player:
 
                 if (_currentCollidedComponentTag == ComponentType.EnemyChaser)
-                    Destroy(_currentCollidedObject);
+                {
+                    SetTargetDamage(collidedObject, rootComponent);
 
+                    Destroy(collidedObject);
+                }
+                    
                 else if(_currentCollidedComponentTag == ComponentType.EnemyShooter)
-                    SetTargetDamage();
+                {
+                    SetTargetDamage(rootComponent, collidedObject);
+
+                    SetTargetDamage(collidedObject, rootComponent);
+                }
+                    
+                break;
+
+            case ComponentType.EnemyChaser:
+
+                if (_currentCollidedComponentTag == ComponentType.Player)
+                    
+                    SetTargetDamage(rootComponent, collidedObject);
+
+                    Destroy(rootComponent);
 
                 break;
 
-            //case ComponentType.EnemyChaser:
+            case ComponentType.EnemyShooter:
 
-            //    if (_currentCollidedComponentTag == ComponentType.Player)
-            //        Destroy(_currentRootComponent);
+                if (_currentCollidedComponentTag == ComponentType.Player)
+                    
+                    SetTargetDamage(rootComponent, collidedObject);
 
-            //    break;
-
-            //case ComponentType.EnemyShooter:
-
-            //    if (_currentCollidedComponentTag == ComponentType.Player)
-            //        SetTargetDamage();
-
-            //    break;
+                break;
 
             case ComponentType.CannonBall:
 
-                if (_currentCollidedComponentTag == ComponentType.Player || _currentCollidedComponentTag == ComponentType.EnemyShooter ||
-                    _currentCollidedComponentTag == ComponentType.EnemyChaser)
+                CannonBallBase ball = rootComponent.GetComponent<CannonBallBase>();
+
+                if(!ball.HasCollided)
                 {
-                    CannonBallBase ball = _currentRootComponent.GetComponent<CannonBallBase>();
+                    ball?.OnCollision();
 
-                    if(!ball.HasCollided)
-                    {
-                        ball?.OnCollision();
-
-                        IDamageable targetToDamage = _currentCollidedObject.GetComponent<IDamageable>();
-                        targetToDamage?.Damage(ball.DamageValue);
-                    }               
-                }
+                    IDamageable targetToDamage = collidedObject.GetComponent<IDamageable>();
+                    targetToDamage?.Damage(ball.DamageValue);
+                }               
+                
                    
-                break;
+            break;
         }         
     }
 
     private void Destroy(GameObject componentToDestroy)
     {
-        SetTargetDamage();
 
         IDamageable destroy = componentToDestroy.GetComponent<IDamageable>();
 
@@ -96,15 +101,15 @@ public class CollisionManager
         if (destroy != null)
         {
             Debug.Log("PASSOU DESTROY ");
-            destroy.Kill();
+            destroy.Destroy();
         }           
     }
 
-    private void SetTargetDamage()
+    private void SetTargetDamage(GameObject rootComponent, GameObject target)
     {
-        _rootComponent = _currentRootComponent.GetComponent<IDamageable>();
+        _rootComponent = rootComponent.GetComponent<IDamageable>();
 
-        _targetToDamage = _currentCollidedObject.GetComponent<IDamageable>();
+        _targetToDamage = target.GetComponent<IDamageable>();
 
         if(_rootComponent != null && _targetToDamage != null)
             _targetToDamage?.Damage(_rootComponent.TotalDamageToDeal);

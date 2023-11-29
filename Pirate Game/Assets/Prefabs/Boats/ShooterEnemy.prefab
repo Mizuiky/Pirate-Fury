@@ -711,10 +711,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db14eaca8dda2b4b9eaf426bf626507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startLife: 20
-  _damagePercent: 0.4
+  _startLife: 10
+  _damagePercent: 1
   healthSlider: {fileID: 7687916083852625471}
-  _damageToDeal: 5
+  _damageToDeal: 1
 --- !u!1 &5260207363607948934
 GameObject:
   m_ObjectHideFlags: 0

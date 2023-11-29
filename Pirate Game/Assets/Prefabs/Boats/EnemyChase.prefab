@@ -115,7 +115,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rootComponent: {fileID: 1576446198536488726}
-  colliders: {fileID: 2435792202350764225}
 --- !u!1 &1405211495645500654
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,10 +254,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db14eaca8dda2b4b9eaf426bf626507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startLife: 20
-  _damagePercent: 0.4
+  _startLife: 10
+  _damagePercent: 1
   healthSlider: {fileID: 1929615261685776140}
-  _damageToDeal: 5
+  _damageToDeal: 1
 --- !u!1 &2049814549578595400
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,7 +875,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rootComponent: {fileID: 1576446198536488726}
-  colliders: {fileID: 0}
 --- !u!1 &8425499881022022747
 GameObject:
   m_ObjectHideFlags: 0

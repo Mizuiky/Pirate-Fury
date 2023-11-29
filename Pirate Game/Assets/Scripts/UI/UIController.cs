@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class UIController : MonoBehaviour
 
         _hud.Init(GameManager.Instance.SaveController.Data.maxClockTime);
 
+        _endGamePanel.EnableEndPanel(false);
+
     }
 
     public void Reset()
@@ -31,6 +34,6 @@ public class UIController : MonoBehaviour
 
     public void OpenEndPanel()
     {
-
+        _endGamePanel.Show();
     }
 }

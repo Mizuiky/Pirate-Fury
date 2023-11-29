@@ -33,6 +33,24 @@ public class Pool : MonoBehaviour
         }
     }
 
+    public void Reset()
+    {
+        for(int i = 0; i < _pools.Length; i++)
+        {
+            DisableObjects(_pools[i].poolList);         
+        }
+    }
+
+    private void DisableObjects(List<IEnable> poolObjects)
+    {
+
+        foreach (IEnable poolObject in poolObjects)
+        {
+            poolObject.Reset();
+        }
+    }
+
+
     private void CreatePool(PoolComponent pool)
     {
         pool.poolList = new List<IEnable>();

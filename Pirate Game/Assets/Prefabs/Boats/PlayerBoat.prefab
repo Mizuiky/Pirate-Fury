@@ -227,7 +227,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rootComponent: {fileID: 4739245609152150769}
-  colliderComponent: {fileID: 1461536127909846800}
 --- !u!1 &2360996539077787877
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +444,6 @@ Transform:
   m_Children:
   - {fileID: 7786708916616920561}
   - {fileID: 1578246324389963203}
-  - {fileID: 3236268224722697928}
   - {fileID: 4556137068109861655}
   m_Father: {fileID: 673624689348654356}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -754,7 +752,6 @@ MonoBehaviour:
   _healthBase: {fileID: 4507633088258793456}
   _cannon: {fileID: 5920870911275465243}
   _input: {fileID: 5324663418163874469}
-  _startPosition: {fileID: 3236268224722697928}
   _collisions:
   - {fileID: 6064541812843417192}
   - {fileID: 6349537258934959536}
@@ -787,10 +784,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f62fe0931fd6b4581cd74a6c1a9bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startLife: 20
-  _damagePercent: 0.8
+  _startLife: 10
+  _damagePercent: 1
   healthSlider: {fileID: 4070844411565613253}
-  _damageToDeal: 2
+  _damageToDeal: 1
 --- !u!50 &4989700437247984382
 Rigidbody2D:
   serializedVersion: 4
@@ -899,7 +896,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rootComponent: {fileID: 4739245609152150769}
-  colliderComponent: {fileID: 4312170688909490678}
 --- !u!1 &5805026699894965067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,37 +1011,6 @@ Transform:
   m_Children:
   - {fileID: 3609800552285474640}
   - {fileID: 8784627761628991069}
-  m_Father: {fileID: 4445639127893875141}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8774106232534191975
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3236268224722697928}
-  m_Layer: 0
-  m_Name: StartPosition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3236268224722697928
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8774106232534191975}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
   m_Father: {fileID: 4445639127893875141}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9085844273773866497

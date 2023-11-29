@@ -22,12 +22,16 @@ public class Timer: MonoBehaviour
 
     public bool isActive;
 
-    public Action OnGameEnd;
+    public static Action OnTimerIsOver;
+
+    private float _sliderTime;
 
     public void Init(float maxTime)
     {
 
         _maxTime = maxTime * 60;
+
+        GameManager.Instance.PlayerBoat.OnPlayerDeath += StopTimer;
 
         Reset();
     }
@@ -40,9 +44,15 @@ public class Timer: MonoBehaviour
 
         _seconds = 0;
 
-        _elapsedTime = 1;
+        _sliderTime = 0;
+
+        _elapsedTime = _maxTime;
 
         _timerSlider.Init(_maxTime);
+
+        _timerText.text = string.Format("{0:00} : {1:00}", _maxTime / 60, _seconds % 60);
+
+        UpdateSlider();
 
         isActive = true;
     }
@@ -51,25 +61,48 @@ public class Timer: MonoBehaviour
     {
         if (isActive)
         {
-            if (_elapsedTime < _maxTime)
+            if (_elapsedTime >= 0)
             {
-                _elapsedTime += Time.deltaTime;
 
-                _minutes = Mathf.FloorToInt(_elapsedTime / 60);
-                _seconds = Mathf.FloorToInt(_elapsedTime % 60);
+                _elapsedTime -= Time.deltaTime;
 
-                _timerSlider.UpdateSlider(_elapsedTime);
-
-                _timerText.text = string.Format("{0:00} : {1:00}", _minutes, _seconds);
-
-                Debug.Log(_timerText);
-
-                if (_elapsedTime >= _maxTime)
+                if (_elapsedTime <= 0)
                 {
+                    _timerText.text = string.Format("{0:00} : {1:00}", 0, 0);
+
+                    _sliderTime = _maxTime;
+
+                    UpdateSlider();
+
                     Debug.Log("EndGame Game");
-                    OnGameEnd?.Invoke();
-                }                                   
+                    OnTimerIsOver?.Invoke();
+                }
+                else
+                {
+                    //Debug.Log("elapsed time " + _elapsedTime);
+
+                    _minutes = Mathf.FloorToInt(_elapsedTime / 60);
+                    _seconds = Mathf.FloorToInt(_elapsedTime % 60);
+
+                    _timerText.text = string.Format("{0:00} : {1:00}", _minutes, _seconds);
+
+                    UpdateSlider();
+
+                    //Debug.Log(_timerText.text);
+                }                                       
             }
         }
+    }
+
+    private void UpdateSlider()
+    {
+        _sliderTime += Time.deltaTime;
+
+        _timerSlider.UpdateSlider(_sliderTime);
+    }
+
+    private void StopTimer()
+    {
+        isActive = false;
     }
 }

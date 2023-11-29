@@ -15,16 +15,18 @@ public class CollisionBase : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log(rootComponent);
+
         ICollision component = rootComponent.GetComponent<ICollision>();
 
-        if(component == null || !component.HasCollided)
+        ICollision objectCollided = collision.gameObject.GetComponentInParent<ICollision>();
+
+        if (!component.HasCollided && !objectCollided.HasCollided)
         {
-            if (component != null) {
-                component.HasCollided = true;
-            }
+
             GameObject collisionReference = collision.gameObject.GetComponent<CollisionBase>().rootComponent;
 
             OnCollision?.Invoke(rootComponent, collisionReference);      
         }                   
-    }    
+    }        
 }

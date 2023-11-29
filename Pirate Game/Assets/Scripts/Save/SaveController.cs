@@ -27,7 +27,7 @@ public class SaveController
 
     private SaveData MockSaveData(SaveData data)
     {
-        data.maxClockTime = 1f;
+        data.maxClockTime = 0.34f;
         data.defaultEnemySpawnTime = 2f;
 
         return data;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -73,7 +74,12 @@ public class GameManager : MonoBehaviour
         _saveController = new SaveController();
 
         if (_playerBoat != null)
+        {
             _playerBoat.OnPlayerDeath += OnEndGame;
+            _playerBoat.OnPlayerStop += OnEndGame;
+        }
+            
+        Timer.OnTimerIsOver += OnEndGame;
 
         _collisionManager = new CollisionManager();
         _collisionManager.Init();
@@ -91,7 +97,8 @@ public class GameManager : MonoBehaviour
         _worldController.Reset();
 
         _UIController.Reset();
-        
+
+        pool.Reset();
     }
 
     private void StartPlayer()
@@ -110,6 +117,7 @@ public class GameManager : MonoBehaviour
     private void OnEndGame()
     {
         Debug.Log("ShowEndGame");
+
         _UIController.OpenEndPanel();
     }
 

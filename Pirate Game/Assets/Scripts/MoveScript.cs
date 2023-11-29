@@ -69,6 +69,11 @@ public class MoveScript : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, _speedRotation * Time.deltaTime);
     }
 
+    public void Reset()
+    {
+        isMoving = true;
+    }
+
     public void OnDrawGizmos()
     {
         Ray ray = new Ray(transform.position, _moveTo);
