@@ -12,24 +12,61 @@ public class SaveController
     public SaveController()
     {
         _saveData = new SaveData();
-        _saveData = MockSaveData(_saveData);
-
-    }
-    private void Save()
-    {
-
     }
 
-    public void Load()
+    public void GetData()
     {
-        
+
+        if(PlayerPrefs.HasKey("GameSessionTime"))
+            _saveData.gameSessionTime = PlayerPrefs.GetFloat("GameSessionTime");
+        else
+            PlayerPrefs.SetFloat("GameSessionTime", 0f);
+ 
+
+        if (PlayerPrefs.HasKey("EnemySpawnTime"))
+            _saveData.enemySpawnTime = PlayerPrefs.GetFloat("EnemySpawnTime");
+        else
+            PlayerPrefs.SetFloat("EnemySpawnTime", 0f);
+
+
+        if (PlayerPrefs.HasKey("Score"))
+            _saveData.playerPoints = PlayerPrefs.GetInt("Score");
+        else
+            PlayerPrefs.SetInt("Score", 0);
+
+        PlayerPrefs.Save();
+
+        Debug.Log("GET DATA");
+        Debug.Log("GameSessionTime " + _saveData.gameSessionTime.ToString());
+        Debug.Log("EnemySpawn " + _saveData.enemySpawnTime.ToString());
+        Debug.Log("PlayerPoints " + _saveData.playerPoints.ToString());
+
+        Debug.Log("GET DATA PlayerPrefs");
+        Debug.Log("GameSessionTime " + PlayerPrefs.GetFloat("GameSessionTime"));
+        Debug.Log("EnemySpawn " + PlayerPrefs.GetFloat("EnemySpawnTime"));
+        Debug.Log("PlayerPoints " + PlayerPrefs.GetInt("Score"));
     }
 
-    private SaveData MockSaveData(SaveData data)
+    public void DeleteKeys()
     {
-        data.maxClockTime = 0.34f;
-        data.defaultEnemySpawnTime = 2f;
+        PlayerPrefs.DeleteAll();
+    }
 
-        return data;
+    public void SetGameSessionData(float sessionTime)
+    {
+        PlayerPrefs.SetFloat("GameSessionTime", sessionTime);
+        PlayerPrefs.Save();
+    }
+
+    public void SetEnemySpawnerData(float spawnerTime)
+    {
+        PlayerPrefs.SetFloat("EnemySpawnTime", spawnerTime);
+        PlayerPrefs.Save();
+    }
+
+    public void SetPlayerScore(int points)
+    {
+        PlayerPrefs.SetInt("Score", points);
+        PlayerPrefs.Save();
     }
 }

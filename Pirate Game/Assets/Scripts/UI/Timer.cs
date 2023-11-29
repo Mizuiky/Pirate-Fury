@@ -26,10 +26,11 @@ public class Timer: MonoBehaviour
 
     private float _sliderTime;
 
-    public void Init(float maxTime)
+    public void Init()
     {
 
-        _maxTime = maxTime * 60;
+        _maxTime = GameManager.Instance.SaveController.Data.gameSessionTime;
+        _maxTime *= 60;
 
         GameManager.Instance.PlayerBoat.OnPlayerDeath += StopTimer;
 

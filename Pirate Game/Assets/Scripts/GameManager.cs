@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
         StartPlayer();
 
         _saveController = new SaveController();
+        _saveController.GetData();
 
         if (_playerBoat != null)
         {
@@ -117,6 +118,8 @@ public class GameManager : MonoBehaviour
     private void OnEndGame()
     {
         Debug.Log("ShowEndGame");
+
+        _saveController.SetPlayerScore(_worldController.ScoreController.Points);
 
         _UIController.OpenEndPanel();
     }

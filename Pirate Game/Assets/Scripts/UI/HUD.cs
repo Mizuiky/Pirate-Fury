@@ -21,10 +21,10 @@ public class HUD : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _score;
 
-    public void Init(float maxTimer)
+    public void Init()
     {
         Reset();
-        _timer.Init(maxTimer);
+        _timer.Init();
     }
 
     public void UpdateScore(int points)

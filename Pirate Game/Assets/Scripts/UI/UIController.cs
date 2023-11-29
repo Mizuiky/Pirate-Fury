@@ -15,7 +15,7 @@ public class UIController : MonoBehaviour
     {
         GameManager.Instance.WorldController.ScoreController.OnUpdateScore += OnUpdateScore;
 
-        _hud.Init(GameManager.Instance.SaveController.Data.maxClockTime);
+        _hud.Init();
 
         _endGamePanel.EnableEndPanel(false);
 

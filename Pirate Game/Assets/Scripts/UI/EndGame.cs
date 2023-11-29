@@ -31,9 +31,9 @@ public class EndGame : MonoBehaviour
 
     public void Show()
     {
-        Debug.Log("Score:" + GameManager.Instance.WorldController.ScoreController.Points.ToString());
+        Debug.Log("Score:" + GameManager.Instance.SaveController.Data.playerPoints.ToString());
 
-        _scoreText.text = GameManager.Instance.WorldController.ScoreController.Points.ToString();
+        _scoreText.text = GameManager.Instance.SaveController.Data.playerPoints.ToString();
 
         _endPanel.SetActive(true);
     }
