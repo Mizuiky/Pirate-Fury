@@ -4,11 +4,9 @@ using UnityEngine;
 public class CollisionManager
 {
     private ComponentType _currentCollidedComponentTag;
-
     private ComponentType _currentRootComponentTag;
 
     private IDamageable _rootComponent;
-
     private IDamageable _targetToDamage;
 
     public void Init()
@@ -25,7 +23,7 @@ public class CollisionManager
         }
         catch(Exception e)
         {
-            Debug.LogError("trying to get the enum: "+e);
+            Debug.LogError("trying to get the enum: " + e);
         }
 
         switch (_currentRootComponentTag)
@@ -62,12 +60,13 @@ public class CollisionManager
     {
         CannonBallBase ball = collidedObject.GetComponent<CannonBallBase>();
 
-        if (!ball.HasCollided)
-        {
-            ball.OnCollision();
-            IDamageable targetToDamage = rootComponent.GetComponent<IDamageable>();
-            targetToDamage?.Damage(ball.DamageValue);
-        }
+        if (ball.HasCollided)
+            return;
+
+        ball.OnCollision();
+
+        IDamageable targetToDamage = rootComponent.GetComponent<IDamageable>();
+        targetToDamage?.Damage(ball.DamageValue);      
     }
 
     private void Destroy(GameObject componentToDestroy)
@@ -75,7 +74,7 @@ public class CollisionManager
         IDamageable destroy = componentToDestroy.GetComponent<IDamageable>();
 
         if (destroy == null)
-            throw new Exception("Trying to destroy a non damageable component: "+componentToDestroy.tag);
+            throw new Exception("Trying to destroy a non damageable component: " + componentToDestroy.tag);
 
         destroy.Destroy();
     }
@@ -89,7 +88,7 @@ public class CollisionManager
             _targetToDamage?.Damage(_rootComponent.TotalDamageToDeal);
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         CollisionBase.OnCollision -= ManagerCollisions;
     }

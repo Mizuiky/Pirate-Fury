@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
 
 
     public PlayerBoat PlayerBoat { get { return _playerBoat; } set { _playerBoat = value; } }
-
     private PlayerBoat _playerBoat;
 
 
@@ -92,11 +91,12 @@ public class GameManager : MonoBehaviour
 
         _worldController.Reset();
         _UIController.Reset();
+
+        _collisionManager.Init();
     }
 
     private void OnEndGame()
     {
-
         _spawnerController.IsActive = false;
 
         _saveController.SetPlayerScore(_worldController.ScoreController.Points);
@@ -108,6 +108,8 @@ public class GameManager : MonoBehaviour
     {
         _playerBoat.OnPlayerDeath -= OnEndGame;
         _playerBoat.OnPlayerStop -= OnEndGame;
+
+        _collisionManager.OnDisable();
 
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }

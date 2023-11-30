@@ -41,8 +41,7 @@ public class CannonBase : MonoBehaviour
             StopCoroutine(_currentCoroutine);
 
         isShooting = true;
-        _currentCoroutine = StartCoroutine(ShootCoroutine());
-        
+        _currentCoroutine = StartCoroutine(ShootCoroutine());       
     }
 
     private IEnumerator ShootCoroutine()

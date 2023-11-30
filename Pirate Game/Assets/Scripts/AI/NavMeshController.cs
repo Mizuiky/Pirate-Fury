@@ -15,9 +15,7 @@ public class NavMeshController : MonoBehaviour
     public bool isActive;
 
     public void Init(Transform target)
-    {
-        Debug.Log("nav mesh init");
-            
+    {          
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
         _agent.speed = _speed;
@@ -25,9 +23,6 @@ public class NavMeshController : MonoBehaviour
         _target = target;
 
         isActive = true;
-
-        Debug.Log("nav mesh speed " + _speed);
-
     }
 
     private void Update()

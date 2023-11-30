@@ -11,7 +11,5 @@ public interface IEnable
 
     public void DisableComponent();
 
-    public void EnableColliders(bool enable);
-
     public bool IsActive { get; }
 }
