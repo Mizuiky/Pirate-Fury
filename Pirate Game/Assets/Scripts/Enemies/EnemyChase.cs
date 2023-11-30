@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class EnemyChase : EnemyBase
 {
-    [Header("Movement Components")]
 
     [SerializeField]
-    private float _speed;
+    private NavMeshController _navMeshController;
 
     private Vector2 _direction;
 
@@ -28,8 +27,6 @@ public class EnemyChase : EnemyBase
 
                 Debug.DrawRay(transform.position, _direction * 80, Color.green);
 
-                transform.position = Vector3.MoveTowards(transform.position, target.transform.position, _speed * Time.deltaTime);
-
                 Quaternion desiredRotation = Quaternion.LookRotation(Vector3.forward, _direction);
 
                 transform.rotation = desiredRotation;
@@ -42,12 +39,16 @@ public class EnemyChase : EnemyBase
 
         base.Init(position, rotation);
 
+        _navMeshController.Init(target);
+
         _isMoving = true;
     }
 
     public override void OnDisableEnemy()
     {
         _isMoving = false;
+
+        _navMeshController.isActive = false;
 
         base.OnDisableEnemy();
     }

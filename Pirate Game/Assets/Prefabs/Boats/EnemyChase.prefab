@@ -201,8 +201,10 @@ GameObject:
   - component: {fileID: 958487465917591494}
   - component: {fileID: 1086781850882445398}
   - component: {fileID: 4486446450677991383}
+  - component: {fileID: 1834376930482636600}
   - component: {fileID: -7190401842256675731}
   - component: {fileID: 5885712105001854105}
+  - component: {fileID: 1266751519366528101}
   m_Layer: 3
   m_Name: EnemyChase
   m_TagString: EnemyChaser
@@ -243,7 +245,7 @@ MonoBehaviour:
   _pointsToGiveOnDeath: 1
   colliders: {fileID: 2435792202350764225}
   type: 1
-  _speed: 1
+  _navMeshController: {fileID: 1834376930482636600}
 --- !u!114 &4486446450677991383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,6 +264,21 @@ MonoBehaviour:
   shipDeteriorate: {fileID: 5885712105001854105}
   _damageToDeal: 10
   _maxLife: 10
+--- !u!114 &1834376930482636600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576446198536488726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7d09c9659ea2d747acd1c73e2c6eab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 5
+  _agent: {fileID: 1266751519366528101}
+  isActive: 0
 --- !u!50 &-7190401842256675731
 Rigidbody2D:
   serializedVersion: 4
@@ -313,6 +330,28 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3991df963475cf445bef21b2aabd75ed, type: 3}
   _shipFlag: {fileID: 2456534635914481238}
   _shipBoat: {fileID: 6486489449366683549}
+--- !u!195 &1266751519366528101
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576446198536488726}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &2049814549578595400
 GameObject:
   m_ObjectHideFlags: 0

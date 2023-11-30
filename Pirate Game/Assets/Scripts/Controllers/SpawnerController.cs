@@ -40,7 +40,7 @@ public class SpawnerController : MonoBehaviour
 
         _timeToSpawn = timeToSpawn;
 
-        _isActive = true;
+        _isActive = false;
     }
 
     public void Reset()
@@ -64,19 +64,21 @@ public class SpawnerController : MonoBehaviour
         {
             SpawnEnemy();
         }
-
-        if(_isActive)
+        else
         {
-            if (_elapsedTime <= _timeToSpawn)
-                _elapsedTime += Time.deltaTime;
-
-            else
+            if (_isActive)
             {
-                Debug.Log("spawn enemy");
-                SpawnEnemy();
-                _elapsedTime = 0f;
+                if (_elapsedTime <= _timeToSpawn)
+                    _elapsedTime += Time.deltaTime;
+
+                else
+                {
+                    Debug.Log("spawn enemy");
+                    SpawnEnemy();
+                    _elapsedTime = 0f;
+                }
             }
-        }
+        }     
     }
  
     private void SpawnPlayer()
@@ -97,7 +99,7 @@ public class SpawnerController : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        IEnable enemy = Spawn(PoolType.EnemyShooter);
+        IEnable enemy = Spawn(PoolType.EnemyChaser);
 
         //GetRandomPosition();
 
