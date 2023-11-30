@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb48d8d80192b54ba514056a5b41950, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootKey: 32
-  tripleShootKey: 116
+  shootKey: 256
+  tripleShootKey: 32
 --- !u!1 &745576936679316943
 GameObject:
   m_ObjectHideFlags: 0

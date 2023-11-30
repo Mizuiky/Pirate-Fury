@@ -320,7 +320,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.000000011175871, y: -0.0041531622}
@@ -349,7 +349,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rootComponent: {fileID: 5915371667894321672}
-  colliderComponent: {fileID: 344595814512055066}
 --- !u!1 &7000020022169545217
 GameObject:
   m_ObjectHideFlags: 0
