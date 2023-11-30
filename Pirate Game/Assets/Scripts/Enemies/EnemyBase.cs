@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class EnemyBase : MonoBehaviour, IEnable, ICollision, IAnimation
@@ -38,8 +35,7 @@ public class EnemyBase : MonoBehaviour, IEnable, ICollision, IAnimation
 
     public virtual void Init(Vector3 position, Quaternion rotation)
     {
-        transform.position = position;
-        transform.rotation = rotation;
+        transform.SetPositionAndRotation(position, rotation);
 
         this.target = GameManager.Instance.PlayerBoat.transform;
 
@@ -97,16 +93,15 @@ public class EnemyBase : MonoBehaviour, IEnable, ICollision, IAnimation
 
     protected virtual void OnDeath()
     {
-        if(!_hasCollided)
-        {
-            _hasCollided = true;
+        if (_hasCollided)
+            return;
 
-            colliders.SetActive(false);
+        _hasCollided = true;
+        colliders.SetActive(false);
 
-            GameManager.Instance.WorldController.ScoreController.AddPoints(_pointsToGiveOnDeath);
+        GameManager.Instance.WorldController.ScoreController.AddPoints(_pointsToGiveOnDeath);
 
-            _destructionAnimation.Play("Destruction");
-        }      
+        _destructionAnimation.Play("Destruction");
     }
 
     public virtual void DisableComponent()

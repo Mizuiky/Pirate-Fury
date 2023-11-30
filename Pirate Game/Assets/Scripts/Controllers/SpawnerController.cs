@@ -82,7 +82,7 @@ public class SpawnerController : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        IEnable enemy = Spawn(PoolType.EnemyChaser);
+        IEnable enemy = Spawn(PoolType.EnemyShooter) ;
         Vector3 pos = GetRandomPosition();
 
         enemy?.Init(pos, _enemyPositions[0].rotation);
