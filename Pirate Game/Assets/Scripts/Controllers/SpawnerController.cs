@@ -56,17 +56,17 @@ public class SpawnerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
             SpawnEnemy();
 
-        if (_isActive)
+        if (!_isActive)
+            return;
+        
+        if (_elapsedTime <= _timeToSpawn)
         {
-            if (_elapsedTime <= _timeToSpawn)
-            {
-                _elapsedTime += Time.deltaTime;
-                return;
-            }
+            _elapsedTime += Time.deltaTime;
+            return;
+        }
              
-            SpawnEnemy();
-            _elapsedTime = 0f;
-        } 
+        SpawnEnemy();
+        _elapsedTime = 0f; 
     }
  
     private void SpawnPlayer()
@@ -80,9 +80,23 @@ public class SpawnerController : MonoBehaviour
         }
     }
 
+    private PoolType[] GetEnemies()
+    {
+        return new PoolType[] { PoolType.EnemyChaser, PoolType.EnemyShooter };
+    }
+
+    private PoolType GetRandomEnemy()
+    {
+        PoolType[] enemies = GetEnemies();
+        var rand = new System.Random();
+        int index = rand.Next(enemies.Length);
+
+        return enemies[index];
+    }
+
     private void SpawnEnemy()
     {
-        IEnable enemy = Spawn(PoolType.EnemyShooter) ;
+        IEnable enemy = Spawn(GetRandomEnemy()) ;
         Vector3 pos = GetRandomPosition();
 
         enemy?.Init(pos, _enemyPositions[0].rotation);
@@ -99,9 +113,8 @@ public class SpawnerController : MonoBehaviour
         Vector3 pos = Vector3.zero;
 
         if (NavMesh.SamplePosition(randomPos, out NavMeshHit hit, _maxDistance, NavMesh.AllAreas))
-        {
             pos = hit.position;
-        }
+        
         return pos;
     }
 
