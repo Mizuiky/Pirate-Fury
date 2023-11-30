@@ -28,7 +28,7 @@ public class SpawnerController : MonoBehaviour
 
     private float _timeToSpawn;
 
-    private float _nextTimeToSpawn;
+    private float _elapsedTime;
 
 
     public void Init(float timeToSpawn)
@@ -50,7 +50,7 @@ public class SpawnerController : MonoBehaviour
 
         _player.Reset();
 
-        _nextTimeToSpawn = 0f;
+        _elapsedTime = 0f;
 
         _isActive = true;
 
@@ -67,14 +67,14 @@ public class SpawnerController : MonoBehaviour
 
         if(_isActive)
         {
-            if (_nextTimeToSpawn <= _timeToSpawn)
-                _nextTimeToSpawn += Time.deltaTime;
+            if (_elapsedTime <= _timeToSpawn)
+                _elapsedTime += Time.deltaTime;
 
             else
             {
                 Debug.Log("spawn enemy");
                 SpawnEnemy();
-                _nextTimeToSpawn = 0f;
+                _elapsedTime = 0f;
             }
         }
     }
