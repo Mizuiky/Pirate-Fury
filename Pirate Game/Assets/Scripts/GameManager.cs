@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,7 +30,6 @@ public class GameManager : MonoBehaviour
 
 
     public PlayerBoat PlayerBoat { get { return _playerBoat; } set { _playerBoat = value; } }
-
     private PlayerBoat _playerBoat;
 
 
@@ -63,19 +60,18 @@ public class GameManager : MonoBehaviour
 
     private void Init()
     {
-    
         _saveController = new SaveController();
         _saveController.GetData();
 
         _spawnerController.Init(_saveController.Data.enemySpawnTime);
 
-        Timer.OnTimerIsOver += OnEndGame;
+        if (_playerBoat == null)
+            throw new Exception("Game manager init without player");
 
-        if (_playerBoat != null)
-        {
-            _playerBoat.OnPlayerDeath += OnEndGame;
-            _playerBoat.OnPlayerStop += OnEndGame;
-        }
+        _playerBoat.OnPlayerDeath += OnEndGame;
+        _playerBoat.OnPlayerStop += OnEndGame;
+
+        Timer.OnTimerIsOver += OnEndGame;
 
         _cameraController.SetCameraTarget(_playerBoat.transform);
 
@@ -85,28 +81,22 @@ public class GameManager : MonoBehaviour
         _worldController = new WorldController();
 
         _UIController.Init();
-
         _UIController.StartHUDLife(_playerBoat.Health.CurrentLife);
     }
 
     public void Restart()
     {
-
         _spawnerController.Reset();
-
         _cameraController.SetCameraTarget(_playerBoat.transform);
 
         _worldController.Reset();
-
         _UIController.Reset();
 
         _collisionManager.Init();
-
     }
 
     private void OnEndGame()
     {
-
         _spawnerController.IsActive = false;
 
         _saveController.SetPlayerScore(_worldController.ScoreController.Points);
