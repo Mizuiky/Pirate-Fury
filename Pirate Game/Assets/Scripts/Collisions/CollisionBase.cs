@@ -13,7 +13,7 @@ public class CollisionBase : MonoBehaviour
         ICollision origin = rootComponent.GetComponent<ICollision>();
         ICollision destination = collision.gameObject.GetComponent<ICollision>();
 
-        if (!origin.HasCollided && !destination.HasCollided)
+        if (!origin.HasCollided && destination != null && !destination.HasCollided)
             OnCollision?.Invoke(rootComponent, collision.gameObject);                   
     }        
 }

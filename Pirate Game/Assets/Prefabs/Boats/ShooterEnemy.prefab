@@ -657,6 +657,7 @@ GameObject:
   - component: {fileID: 910957593159748809}
   - component: {fileID: 6479847890073708462}
   - component: {fileID: 1322421725254678912}
+  - component: {fileID: 3936948099527706657}
   m_Layer: 8
   m_Name: ShooterEnemy
   m_TagString: EnemyShooter
@@ -715,7 +716,9 @@ MonoBehaviour:
   _startLife: 10
   _damagePercent: 1
   healthSlider: {fileID: 7687916083852625471}
+  shipDeteriorate: {fileID: 3936948099527706657}
   _damageToDeal: 1
+  _maxLife: 10
 --- !u!50 &1322421725254678912
 Rigidbody2D:
   serializedVersion: 4
@@ -743,6 +746,30 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &3936948099527706657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3732637818610079101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af292393fbfb41248976e964dbf977b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damagedHealthPercentage: 70
+  _dyingHealthPercentage: 30
+  _flags:
+  - {fileID: 21300000, guid: a88cf9d76404c164e82243ad36faa9ca, type: 3}
+  - {fileID: 21300000, guid: 69fdcf68b4ff5914bb8610915b326b54, type: 3}
+  - {fileID: 21300000, guid: 2bfdc8d80b9d585408d94dc70d24b00a, type: 3}
+  _boats:
+  - {fileID: 21300000, guid: 2122aee9b5fcd9446836e5bb5d48ab81, type: 3}
+  - {fileID: 21300000, guid: bc3b9f2b15ad538438022a06681a6648, type: 3}
+  - {fileID: 21300000, guid: 3991df963475cf445bef21b2aabd75ed, type: 3}
+  _shipFlag: {fileID: 420909277552872756}
+  _shipBoat: {fileID: 6296071984998590085}
 --- !u!1 &5260207363607948934
 GameObject:
   m_ObjectHideFlags: 0
