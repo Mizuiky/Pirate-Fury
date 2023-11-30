@@ -8,6 +8,7 @@ TagManager:
   - EnemyChaser
   - Enemy
   - EnemyShooter
+  - Confiner
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Player
   - CannonBall
   - EnemyShooter
-  - 
+  - Confiner
   - 
   - 
   - 

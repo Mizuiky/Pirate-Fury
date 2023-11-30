@@ -37,6 +37,9 @@ public class GameManager : MonoBehaviour
     private CollisionManager _collisionManager;
 
     private WorldController _worldController;
+
+    [SerializeField]
+    private CameraController _cameraController;
     public WorldController WorldController { get { return _worldController; } }
 
     private SaveController _saveController;
@@ -83,7 +86,9 @@ public class GameManager : MonoBehaviour
             _playerBoat.OnPlayerDeath += OnEndGame;
             _playerBoat.OnPlayerStop += OnEndGame;
         }
-            
+
+        _cameraController.SetCameraTarget(_playerBoat.transform);
+
         Timer.OnTimerIsOver += OnEndGame;
 
         _collisionManager = new CollisionManager();
@@ -98,6 +103,8 @@ public class GameManager : MonoBehaviour
     {
 
         _playerBoat.Reset();
+
+        _cameraController.SetCameraTarget(_playerBoat.transform);
 
         _worldController.Reset();
 
