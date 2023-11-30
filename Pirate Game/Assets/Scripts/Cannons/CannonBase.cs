@@ -57,10 +57,9 @@ public class CannonBase : MonoBehaviour
 
     public virtual void Shoot()
     {
-        cannonBall = GameManager.Instance.pool.GetItem(_cannonBallType);
+        cannonBall = GameManager.Instance.SpawnerController.Spawn(_cannonBallType);
 
-        //ShootExplosion
-
-        cannonBall?.Init(positionToShoot.position, positionToShoot.rotation);          
+        if(cannonBall != null)
+            cannonBall?.Init(positionToShoot.position, positionToShoot.rotation);          
     }
 }

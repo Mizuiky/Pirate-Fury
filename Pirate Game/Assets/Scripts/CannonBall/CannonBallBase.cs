@@ -18,6 +18,9 @@ public class CannonBallBase : MonoBehaviour, IEnable, ICollision
     [SerializeField]
     private CollisionBase[] _collisions;
 
+    [SerializeField]
+    private Animator _animator;
+
     public ComponentType type;
 
     public float DamageValue { get { return _damageValue; } }
@@ -61,6 +64,8 @@ public class CannonBallBase : MonoBehaviour, IEnable, ICollision
 
         EnableColliders(true);
 
+        _animator.SetBool("CanExplode", false);
+
         gameObject.SetActive(true);
 
         _isActive = true;
@@ -95,6 +100,8 @@ public class CannonBallBase : MonoBehaviour, IEnable, ICollision
 
             StartCoroutine(DisableBallCoroutine());
 
+            _animator.SetBool("CanExplode", true);
+
             DisableComponent();
         }       
     }
@@ -110,6 +117,7 @@ public class CannonBallBase : MonoBehaviour, IEnable, ICollision
 
     public void DisableComponent()
     {
+        _animator.SetBool("CanExplode", false);
 
         _isActive = false;
         gameObject.SetActive(false);     

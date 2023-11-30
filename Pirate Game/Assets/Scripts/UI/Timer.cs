@@ -106,4 +106,9 @@ public class Timer: MonoBehaviour
     {
         isActive = false;
     }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.PlayerBoat.OnPlayerDeath -= StopTimer;
+    }
 }

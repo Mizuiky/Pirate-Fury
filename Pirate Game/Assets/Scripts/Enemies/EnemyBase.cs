@@ -30,17 +30,6 @@ public class EnemyBase : MonoBehaviour, IEnable, ICollision
     public bool IsActive { get { return _isActive; } }
     public bool Health { get { return healthBase; } }
 
-    private void Start()
-    {
-        if (healthBase != null)
-        {
-            healthBase.OnKill += OnDeath;
-            healthBase.OnDamage += OnDamage;
-
-            healthBase.Reset();
-        }
-    }
-
     private void Update()
     {
         
@@ -48,7 +37,6 @@ public class EnemyBase : MonoBehaviour, IEnable, ICollision
 
     public void Reset()
     {
-        healthBase.Reset();
 
         EnableColliders(false);
 
@@ -56,6 +44,14 @@ public class EnemyBase : MonoBehaviour, IEnable, ICollision
 
         GameManager.Instance.PlayerBoat.OnPlayerDeath += OnDisableEnemy;
         Timer.OnTimerIsOver += OnDisableEnemy;
+
+        if (healthBase != null)
+        {
+            healthBase.OnKill += OnDeath;
+            healthBase.OnDamage += OnDamage;
+
+            healthBase.Reset();
+        }
 
         DisableComponent();
     }
@@ -72,7 +68,13 @@ public class EnemyBase : MonoBehaviour, IEnable, ICollision
 
         _hasCollided = false;
 
-        healthBase.Reset();
+        if(healthBase != null)
+        {
+            healthBase.OnKill += OnDeath;
+            healthBase.OnDamage += OnDamage;
+
+            healthBase.Reset();
+        } 
 
         colliders.SetActive(true);
 
@@ -138,5 +140,16 @@ public class EnemyBase : MonoBehaviour, IEnable, ICollision
 
         _isActive = false;
         gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        healthBase.OnKill -= OnDeath;
+        healthBase.OnDamage -= OnDamage;
+
+        if(GameManager.Instance.PlayerBoat != null)
+            GameManager.Instance.PlayerBoat.OnPlayerDeath -= OnDisableEnemy;
+
+        Timer.OnTimerIsOver -= OnDisableEnemy;
     }
 }

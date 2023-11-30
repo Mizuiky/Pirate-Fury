@@ -36,4 +36,9 @@ public class UIController : MonoBehaviour
     {
         _endGamePanel.Show();
     }
+
+    private void OnDisable()
+    {
+        GameManager.Instance.WorldController.ScoreController.OnUpdateScore -= OnUpdateScore;
+    }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum ComponentType
 {
@@ -15,35 +16,34 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public Pool pool;
-
-    [SerializeField]
-    private GameObject _playerPrefab;
-
-    [SerializeField]
-    private Transform _playerStartPosition;
-
-    [SerializeField]
-    private Transform _enemyStartPosition;
-
     [SerializeField]
     private UIController _UIController;
     public UIController UIController { get { return _UIController; } }
 
-    public PlayerBoat PlayerBoat { get { return _playerBoat; } }
-
-    private PlayerBoat _playerBoat;
-
-    private CollisionManager _collisionManager;
-
-    private WorldController _worldController;
 
     [SerializeField]
     private CameraController _cameraController;
     public WorldController WorldController { get { return _worldController; } }
 
+
+    [SerializeField]
+    private SpawnerController _spawnerController;
+    public SpawnerController SpawnerController { get { return _spawnerController; } }
+
+
+    public PlayerBoat PlayerBoat { get { return _playerBoat; } set { _playerBoat = value; } }
+
+    private PlayerBoat _playerBoat;
+
+
     private SaveController _saveController;
     public SaveController SaveController { get { return _saveController; } }
+
+
+    private CollisionManager _collisionManager;
+
+    private WorldController _worldController;
+
 
     private void Awake()
     {
@@ -52,34 +52,30 @@ public class GameManager : MonoBehaviour
 
         else
             Destroy(this);
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    private void Start()
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log("Scene " + scene.name + " was loaded ");
+
         Init();
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.I))
-        {
-            InstantiateEnemy();
-        }
     }
 
     private void Init()
     {
-        if(pool != null)
-            pool.InitPool();
-
-        StartPlayer();
-
+      
         Debug.Log("GameManager Init");
 
         _saveController = new SaveController();
         _saveController.GetData();
 
+        _spawnerController.Init(_saveController.Data.enemySpawnTime);
+
         Debug.Log("GetData GameManger");
+
+        Timer.OnTimerIsOver += OnEndGame;
 
         if (_playerBoat != null)
         {
@@ -88,8 +84,6 @@ public class GameManager : MonoBehaviour
         }
 
         _cameraController.SetCameraTarget(_playerBoat.transform);
-
-        Timer.OnTimerIsOver += OnEndGame;
 
         _collisionManager = new CollisionManager();
         _collisionManager.Init();
@@ -102,7 +96,7 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
 
-        _playerBoat.Reset();
+        _spawnerController.Reset();
 
         _cameraController.SetCameraTarget(_playerBoat.transform);
 
@@ -110,35 +104,24 @@ public class GameManager : MonoBehaviour
 
         _UIController.Reset();
 
-        pool.Reset();
-    }
-
-    private void StartPlayer()
-    {
-        GameObject player = Instantiate(_playerPrefab, _playerStartPosition);
-
-        if (player != null)
-        {
-            _playerBoat = player.GetComponent<PlayerBoat>();
-
-            if (_playerBoat != null)
-                _playerBoat.Init(_playerStartPosition.position);
-        }
     }
 
     private void OnEndGame()
     {
         Debug.Log("ShowEndGame");
 
+        _spawnerController.IsActive = false;
+
         _saveController.SetPlayerScore(_worldController.ScoreController.Points);
 
         _UIController.OpenEndPanel();
     }
 
-    private void InstantiateEnemy()
+    private void OnDisable()
     {
-        IEnable enemy = pool.GetItem(PoolType.EnemyChaser);
+        _playerBoat.OnPlayerDeath -= OnEndGame;
+        _playerBoat.OnPlayerStop -= OnEndGame;
 
-        enemy?.Init(_enemyStartPosition.position, _enemyStartPosition.rotation);
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

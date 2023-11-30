@@ -88,4 +88,9 @@ public class CollisionManager
         if(_rootComponent != null && _targetToDamage != null)
             _targetToDamage?.Damage(_rootComponent.TotalDamageToDeal);
     }
+
+    private void OnDisable()
+    {
+        CollisionBase.OnCollision -= ManagerCollisions;
+    }
 }

@@ -52,6 +52,7 @@ MonoBehaviour:
   _damageValue: 3
   _collisions:
   - {fileID: 7520963356695313338}
+  _animator: {fileID: 5620398625928467610}
   type: 3
 --- !u!58 &1592387185594275430
 CircleCollider2D:
@@ -101,7 +102,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rootComponent: {fileID: 1159260120426265881}
-  colliderComponent: {fileID: 1592387185594275430}
 --- !u!1 &2008063779204152091
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,6 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7625186758390233486}
   - component: {fileID: 320604157679596094}
+  - component: {fileID: 5620398625928467610}
   m_Layer: 7
   m_Name: Ball
   m_TagString: CannonBall
@@ -186,3 +187,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &5620398625928467610
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008063779204152091}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 545600293634653458903d0da5f0bea7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

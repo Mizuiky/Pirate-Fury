@@ -64,15 +64,14 @@ public class PlayerBoat : MonoBehaviour, ICollision
 
     public void Reset()
     {
-        //reset player position
+        transform.position = _startPosition;
 
         _healthBase.Reset();
 
         _move.Reset();
 
-        transform.position = _startPosition;
-
         _hasCollided = false;
+
         //reset player animation
     }
 
@@ -128,5 +127,14 @@ public class PlayerBoat : MonoBehaviour, ICollision
 
         OnPlayerStop.Invoke();
         OnDisablePlayer();
+    }
+
+    public void OnDisable()
+    {
+
+        _healthBase.OnKill -= OnDeath;
+        _healthBase.OnDamage -= OnDamage;
+
+        Timer.OnTimerIsOver -= OnDisablePlayer;
     }
 }

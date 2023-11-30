@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2629614860196820010}
   - component: {fileID: 8450426332761394779}
+  - component: {fileID: 99761925951923709}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -168,6 +169,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &99761925951923709
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2829548644497921077}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 545600293634653458903d0da5f0bea7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3845936338120575348
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,6 +306,7 @@ MonoBehaviour:
   _damageValue: 2
   _collisions:
   - {fileID: 5772965977604324975}
+  _animator: {fileID: 99761925951923709}
   type: 3
   _cannonBalls:
   - {fileID: 5350660460546318346}
