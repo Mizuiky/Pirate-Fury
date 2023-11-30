@@ -31,7 +31,7 @@ public class CannonBallBase : MonoBehaviour, IEnable, ICollision
     [Space(10)]
 
     private bool _isActive;
-
+    private bool _canMove;
     private float _currentTime;
 
     public bool IsActive { get { return _isActive; } }
@@ -43,7 +43,7 @@ public class CannonBallBase : MonoBehaviour, IEnable, ICollision
 
     private void Update()
     {
-        if (_isActive)
+        if (_isActive && _canMove)
             transform.position +=  transform.up * _speed * Time.deltaTime;
 
         if(_currentTime < _timeToDestroy)
@@ -59,17 +59,12 @@ public class CannonBallBase : MonoBehaviour, IEnable, ICollision
     public void Init(Vector3 position, Quaternion rotation)
     {
         transform.position = position;
-
         transform.localRotation = rotation;
-
-        EnableColliders(true);
-
-        _animator.SetBool("CanExplode", false);
 
         gameObject.SetActive(true);
 
+        _canMove = true;
         _isActive = true;
-
         _hasCollided = false;
     }
 
@@ -77,49 +72,30 @@ public class CannonBallBase : MonoBehaviour, IEnable, ICollision
     {
         DisableComponent();
 
-        EnableColliders(false);
-
+        _canMove = true;
+        _isActive = true;
         _hasCollided = false;
     }
 
     public void EnableColliders(bool enable)
     {
-        //foreach (CollisionBase collision in _collisions)
-        //{
-        //    collision.colliderComponent.gameObject.SetActive(enable);
-
-        //    Debug.Log("enabled colliders " + collision.colliderComponent.gameObject.activeInHierarchy);
-        //}
+        //TODO: Delete this method
     }
 
     public void OnCollision()
     {
         if(!_hasCollided)
         {
+            _animator.Play("CannonBallExplosion");
+
+            _canMove = false;
             _hasCollided = true;
-
-            StartCoroutine(DisableBallCoroutine());
-
-            _animator.SetBool("CanExplode", true);
-
-            DisableComponent();
-        }       
-    }
-
-    private IEnumerator DisableBallCoroutine()
-    {
-        _hasCollided = true;
-
-        EnableColliders(false);
-
-        yield return new WaitForSeconds(_timeToDestroy);     
+        }
     }
 
     public void DisableComponent()
     {
-        _animator.SetBool("CanExplode", false);
-
+        gameObject.SetActive(false);
         _isActive = false;
-        gameObject.SetActive(false);     
     }
 }

@@ -43,7 +43,6 @@ public class Pool : MonoBehaviour
 
     private void DisableObjects(List<IEnable> poolObjects)
     {
-
         foreach (IEnable poolObject in poolObjects)
         {
             poolObject.Reset();
