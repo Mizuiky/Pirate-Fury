@@ -1895,7 +1895,7 @@ MonoBehaviour:
   _slider: {fileID: 5363711418774516286}
   _timeText: {fileID: 1481774265162371888}
   _maxValue: 180
-  _minValue: 60
+  _minValue: 0
   _currentTime: 0
 --- !u!1001 &6204018998975772218
 PrefabInstance:

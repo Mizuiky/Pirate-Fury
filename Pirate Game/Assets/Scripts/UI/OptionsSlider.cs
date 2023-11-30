@@ -28,9 +28,9 @@ public class OptionsSlider : MonoBehaviour
 
         _timeText.text = "0";
 
-        _slider.value = _currentTime;
-
         _currentTime = _maxValue / 60;
+
+        _slider.value = _maxValue;
 
     }
 

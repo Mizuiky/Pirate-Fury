@@ -71,8 +71,12 @@ public class GameManager : MonoBehaviour
 
         StartPlayer();
 
+        Debug.Log("GameManager Init");
+
         _saveController = new SaveController();
         _saveController.GetData();
+
+        Debug.Log("GetData GameManger");
 
         if (_playerBoat != null)
         {

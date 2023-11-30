@@ -55,6 +55,6 @@ public class MainMenu : MonoBehaviour
         Debug.Log("EnemySpawn " + PlayerPrefs.GetFloat("EnemySpawnTime"));
         Debug.Log("PlayerPoints " + PlayerPrefs.GetInt("Score"));
 
-        sceneController.LoadScene(0);
+        sceneController.LoadScene(1);
     }
 }

@@ -56,17 +56,23 @@ public class SaveController
     {
         PlayerPrefs.SetFloat("GameSessionTime", sessionTime);
         PlayerPrefs.Save();
+
+        _saveData.gameSessionTime = sessionTime;
     }
 
     public void SetEnemySpawnerData(float spawnerTime)
     {
         PlayerPrefs.SetFloat("EnemySpawnTime", spawnerTime);
         PlayerPrefs.Save();
+
+        _saveData.enemySpawnTime = spawnerTime;
     }
 
     public void SetPlayerScore(int points)
     {
         PlayerPrefs.SetInt("Score", points);
         PlayerPrefs.Save();
+
+        _saveData.playerPoints = points;
     }
 }
