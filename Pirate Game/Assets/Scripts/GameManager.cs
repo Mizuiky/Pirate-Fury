@@ -58,22 +58,16 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("Scene " + scene.name + " was loaded ");
-
         Init();
     }
 
     private void Init()
     {
-      
-        Debug.Log("GameManager Init");
-
+    
         _saveController = new SaveController();
         _saveController.GetData();
 
         _spawnerController.Init(_saveController.Data.enemySpawnTime);
-
-        Debug.Log("GetData GameManger");
 
         Timer.OnTimerIsOver += OnEndGame;
 
@@ -108,7 +102,6 @@ public class GameManager : MonoBehaviour
 
     private void OnEndGame()
     {
-        Debug.Log("ShowEndGame");
 
         _spawnerController.IsActive = false;
 

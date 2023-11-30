@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PlayerBoat : MonoBehaviour, ICollision
+public class PlayerBoat : MonoBehaviour, ICollision, IAnimation
 {
     [SerializeField]
     private MoveScript _move;
@@ -20,6 +20,9 @@ public class PlayerBoat : MonoBehaviour, ICollision
     [SerializeField]
     private CollisionBase[] _collisions;
 
+    [SerializeField]
+    private Animator _destructionAnimation;
+
     private Vector3 _startPosition;
 
     public ComponentType type;
@@ -27,6 +30,7 @@ public class PlayerBoat : MonoBehaviour, ICollision
     public HealthBase Health { get { return _healthBase; } }
 
     public Action OnPlayerDeath;
+
     public Action OnPlayerStop;
 
     public Transform PlayerPosition { get { return transform; } }
@@ -53,13 +57,15 @@ public class PlayerBoat : MonoBehaviour, ICollision
             _healthBase.Reset();
         }
 
-        Timer.OnTimerIsOver += OnDisablePlayer;
+        Timer.OnTimerIsOver += StopPlayer;
 
         _move?.Init();
 
         _hasCollided = false;
 
         transform.position = startPosition;
+
+        _destructionAnimation.gameObject.SetActive(false);
     }
 
     public void Reset()
@@ -72,7 +78,7 @@ public class PlayerBoat : MonoBehaviour, ICollision
 
         _hasCollided = false;
 
-        //reset player animation
+        _destructionAnimation.gameObject.SetActive(false);
     }
 
     private void PlayerInput()
@@ -94,7 +100,6 @@ public class PlayerBoat : MonoBehaviour, ICollision
 
     private void OnDamage()
     {
-        //damage animation
         //flash color
     }
 
@@ -102,14 +107,10 @@ public class PlayerBoat : MonoBehaviour, ICollision
     {
         Debug.Log("OnPlayerDeath");
 
-        OnDisablePlayer();
+        _destructionAnimation.gameObject.SetActive(true);
 
-        //death animation
+        _destructionAnimation.Play("Destruction");
 
-        //death particle
-
-        //player send message to game manager saying game is over
-        OnPlayerDeath?.Invoke();
     }
 
     public void OnDisablePlayer()
@@ -117,13 +118,25 @@ public class PlayerBoat : MonoBehaviour, ICollision
         Debug.Log("OnDisablePlayer");
 
         _hasCollided = true;
-
         _move.isMoving = false;
+
     }
 
+    public void OnEndAnimation()
+    {
+        OnPlayerDeath?.Invoke();
+
+        _destructionAnimation.gameObject.SetActive(false);
+
+        OnDisablePlayer();
+    }
+ 
     public void StopPlayer()
     {
         Debug.Log("OnStopPlayer");
+
+        _hasCollided = true;
+        _move.isMoving = false;
 
         OnPlayerStop.Invoke();
         OnDisablePlayer();

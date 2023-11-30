@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CannonBallBase : MonoBehaviour, IEnable, ICollision
+public class CannonBallBase : MonoBehaviour, IEnable, ICollision, IAnimation
 {
     [SerializeField]
     private float _timeToDestroy;
@@ -66,6 +66,8 @@ public class CannonBallBase : MonoBehaviour, IEnable, ICollision
         _canMove = true;
         _isActive = true;
         _hasCollided = false;
+
+        _animator.gameObject.SetActive(true);
     }
 
     public void Reset()
@@ -75,6 +77,8 @@ public class CannonBallBase : MonoBehaviour, IEnable, ICollision
         _canMove = true;
         _isActive = true;
         _hasCollided = false;
+
+        _animator.gameObject.SetActive(true);
     }
 
     public void EnableColliders(bool enable)
@@ -86,11 +90,19 @@ public class CannonBallBase : MonoBehaviour, IEnable, ICollision
     {
         if(!_hasCollided)
         {
-            _animator.Play("CannonBallExplosion");
-
             _canMove = false;
             _hasCollided = true;
+
+            _animator.Play("CannonBallExplosion");
+            
         }
+    }
+
+    public void OnEndAnimation()
+    {
+        Debug.Log("OnCannonBall end animation");
+
+        DisableComponent();
     }
 
     public void DisableComponent()

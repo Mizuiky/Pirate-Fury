@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBase : MonoBehaviour, IEnable, ICollision
+public class EnemyBase : MonoBehaviour, IEnable, ICollision, IAnimation
 {
     [SerializeField]
     protected HealthBase healthBase;
@@ -12,6 +12,9 @@ public class EnemyBase : MonoBehaviour, IEnable, ICollision
 
     [SerializeField]
     private int _pointsToGiveOnDeath;
+
+    [SerializeField]
+    private Animator _destructionAnimation;
 
     //[SerializeField]
     //private CollisionBase [] _collisions;
@@ -42,8 +45,10 @@ public class EnemyBase : MonoBehaviour, IEnable, ICollision
 
         _hasCollided = false;
 
-        GameManager.Instance.PlayerBoat.OnPlayerDeath += OnDisableEnemy;
-        Timer.OnTimerIsOver += OnDisableEnemy;
+        GameManager.Instance.PlayerBoat.OnPlayerDeath += DisableComponent;
+        Timer.OnTimerIsOver += DisableComponent;
+
+        _destructionAnimation.enabled = false;
 
         if (healthBase != null)
         {
@@ -61,10 +66,12 @@ public class EnemyBase : MonoBehaviour, IEnable, ICollision
         transform.position = position;
         transform.rotation = rotation;
 
+        _destructionAnimation.enabled = false;
+
         this.target = GameManager.Instance.PlayerBoat.transform;
 
-        GameManager.Instance.PlayerBoat.OnPlayerDeath += OnDisableEnemy;
-        Timer.OnTimerIsOver += OnDisableEnemy;
+        GameManager.Instance.PlayerBoat.OnPlayerDeath += DisableComponent;
+        Timer.OnTimerIsOver += DisableComponent;
 
         _hasCollided = false;
 
@@ -108,7 +115,6 @@ public class EnemyBase : MonoBehaviour, IEnable, ICollision
 
         if(!_hasCollided)
         {
-            Debug.Log("Explosion Animation!!!");
 
             _hasCollided = true;
 
@@ -118,28 +124,27 @@ public class EnemyBase : MonoBehaviour, IEnable, ICollision
 
             GameManager.Instance.WorldController.ScoreController.AddPoints(_pointsToGiveOnDeath);
 
-            OnDisableEnemy();
+
+            _destructionAnimation.enabled = true;
+
+            _destructionAnimation.Play("Destruction");
+
+            Debug.Log("on enemy death");
         }      
     }
 
-    public virtual void OnDisableEnemy()
+    public virtual void DisableComponent()
     {
-        DisableComponent();
-        //StartCoroutine(DisableEnemy());
-    }
-
-    private IEnumerator DisableEnemy()
-    {
-        yield return new WaitForSeconds(_timeToDestroy);
-
-        DisableComponent();
-    }
-
-    public void DisableComponent()
-    {
-
         _isActive = false;
+
+        _destructionAnimation.enabled = false;
+
         gameObject.SetActive(false);
+    }
+
+    public void OnEndAnimation()
+    {
+        Invoke("DisableComponent", 0.1f);
     }
 
     private void OnDisable()
@@ -148,8 +153,8 @@ public class EnemyBase : MonoBehaviour, IEnable, ICollision
         healthBase.OnDamage -= OnDamage;
 
         if(GameManager.Instance.PlayerBoat != null)
-            GameManager.Instance.PlayerBoat.OnPlayerDeath -= OnDisableEnemy;
+            GameManager.Instance.PlayerBoat.OnPlayerDeath -= DisableComponent;
 
-        Timer.OnTimerIsOver -= OnDisableEnemy;
+        Timer.OnTimerIsOver -= DisableComponent;
     }
 }

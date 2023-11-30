@@ -44,13 +44,13 @@ public class EnemyChase : EnemyBase
         _isMoving = true;
     }
 
-    public override void OnDisableEnemy()
+    public override void DisableComponent()
     {
         _isMoving = false;
 
         _navMeshController.isActive = false;
 
-        base.OnDisableEnemy();
+        base.DisableComponent();
     }
 }
 

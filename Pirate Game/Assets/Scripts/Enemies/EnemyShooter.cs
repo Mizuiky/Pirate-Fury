@@ -53,10 +53,10 @@ public class EnemyShooter : EnemyBase
         _canShoot = false;
     }
 
-    public override void OnDisableEnemy()
+    public override void DisableComponent()
     {
         _canShoot = false;
 
-        base.OnDisableEnemy();
+        base.DisableComponent();
     }
 }
