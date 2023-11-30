@@ -9,7 +9,7 @@ public class PlayerBoat : MonoBehaviour, ICollision, IAnimation
     [Space(10)]
 
     [SerializeField]
-    private HealthBase _healthBase;
+    private PlayerHealth _healthBase;
 
     [SerializeField]
     private CannonBase _cannon;
@@ -27,7 +27,7 @@ public class PlayerBoat : MonoBehaviour, ICollision, IAnimation
 
     public ComponentType type;
 
-    public HealthBase Health { get { return _healthBase; } }
+    public PlayerHealth Health { get { return _healthBase; } }
 
     public Action OnPlayerDeath;
 

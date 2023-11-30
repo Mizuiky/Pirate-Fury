@@ -786,12 +786,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f62fe0931fd6b4581cd74a6c1a9bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startLife: 30
+  _startLife: 40
   _damagePercent: 1
   healthSlider: {fileID: 4070844411565613253}
   shipDeteriorate: {fileID: 1044541075660090353}
-  _damageToDeal: 1
-  _maxLife: 30
+  _damageToDeal: 3
+  _maxLife: 40
 --- !u!50 &4989700437247984382
 Rigidbody2D:
   serializedVersion: 4

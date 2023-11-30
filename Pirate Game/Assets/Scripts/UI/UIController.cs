@@ -14,6 +14,7 @@ public class UIController : MonoBehaviour
     public void Init()
     {
         GameManager.Instance.WorldController.ScoreController.OnUpdateScore += OnUpdateScore;
+        GameManager.Instance.PlayerBoat.Health.OnUpdateLife += UpdateHudLife;
 
         _hud.Init();
 
@@ -30,6 +31,18 @@ public class UIController : MonoBehaviour
     private void OnUpdateScore(int points)
     {
         _hud.UpdateScore(points);
+    }
+
+    private void UpdateHudLife(float currentLife)
+    {
+        Debug.Log("Update HUD player life " + currentLife);
+
+        _hud.UpdateLife(currentLife);
+    }
+
+    public void StartHUDLife(float maxLife)
+    {
+        _hud.UpdateLife(maxLife);
     }
 
     public void OpenEndPanel()

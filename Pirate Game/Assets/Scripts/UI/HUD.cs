@@ -21,6 +21,13 @@ public class HUD : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _score;
 
+    [Space(10)]
+
+    [SerializeField]
+    private SliderBase _lifeSlider;
+
+    private float _maxLife;
+
     public void Init()
     {
         Reset();
@@ -32,10 +39,26 @@ public class HUD : MonoBehaviour
         _score.text = points.ToString();
     }
 
+    public void UpdateLife(float value)
+    {
+        Debug.Log("UPDATE HUD SLIDER " + value);
+
+        _lifeSlider.UpdateSlider(value);
+    }
+
+    public void SetMaxLife(float max)
+    {
+        _maxLife = max;
+
+        _lifeSlider.Init(_maxLife);
+    }
+
     public void Reset()
     {
         _timer.Reset();
 
         _score.text = "0";
+
+        //_currentLife = _maxLife;
     }
 }

@@ -85,6 +85,8 @@ public class GameManager : MonoBehaviour
         _worldController = new WorldController();
 
         _UIController.Init();
+
+        _UIController.StartHUDLife(_playerBoat.Health.CurrentLife);
     }
 
     public void Restart()

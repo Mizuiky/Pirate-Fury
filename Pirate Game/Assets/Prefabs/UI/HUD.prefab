@@ -444,6 +444,7 @@ MonoBehaviour:
   _timer: {fileID: 274876640914045491}
   _health: {fileID: 7594198992792224132}
   _score: {fileID: 5174063844430375374}
+  _lifeSlider: {fileID: 7594198992792224132}
 --- !u!1 &5155244219550156792
 GameObject:
   m_ObjectHideFlags: 0

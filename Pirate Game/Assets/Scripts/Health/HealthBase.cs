@@ -22,16 +22,19 @@ public class HealthBase : MonoBehaviour, IHealth, IDamageable
     private float _maxLife = 10;
 
     private float _currentLife;
-
-    public float MaxLife { get { return _maxLife; } }
-
     public float CurrentLife { get { return _currentLife; } }
 
     public float TotalDamageToDeal { get { return _damageToDeal * _damagePercent; } }
 
     public Action OnKill;
     public Action OnDamage;
-        
+
+
+    private void Start()
+    {
+        _currentLife = _startLife;
+    }
+
     public void Reset()
     {
         _currentLife = _startLife;

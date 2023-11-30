@@ -264,7 +264,7 @@ MonoBehaviour:
   _damagePercent: 1
   healthSlider: {fileID: 1929615261685776140}
   shipDeteriorate: {fileID: 5885712105001854105}
-  _damageToDeal: 10
+  _damageToDeal: 5
   _maxLife: 10
 --- !u!114 &1834376930482636600
 MonoBehaviour:
