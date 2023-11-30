@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthBase : MonoBehaviour, IHealth, IDamageable
@@ -15,9 +13,17 @@ public class HealthBase : MonoBehaviour, IHealth, IDamageable
     private SliderBase healthSlider;
 
     [SerializeField]
+    private ShipDeteriorate shipDeteriorate;
+
+    [SerializeField]
     private float _damageToDeal;
 
+    [SerializeField]
+    private float _maxLife = 10;
+
     private float _currentLife;
+
+    public float MaxLife { get { return _maxLife; } }
 
     public float CurrentLife { get { return _currentLife; } }
 
@@ -31,31 +37,25 @@ public class HealthBase : MonoBehaviour, IHealth, IDamageable
         _currentLife = _startLife;
 
         healthSlider.Init(_startLife);
+        shipDeteriorate.Init(_startLife, _maxLife);
 
         UpdateLife(_currentLife);
     }
 
     public virtual void Damage(float damage)
     {
-        Debug.Log("current life" + _currentLife);
-
         _currentLife -= damage;
 
         if (_currentLife <= 0)
         {
-            _currentLife = 0;
-
-            UpdateLife(_currentLife);
-
+            UpdateLife(0);
             Kill();
 
             return;
         }
 
-        Debug.Log("current life on damage" + _currentLife);
-
         UpdateLife(_currentLife);
-
+        shipDeteriorate.UpdateShipState(_currentLife);
         OnDamage?.Invoke();        
     }
 
