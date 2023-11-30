@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UIController : MonoBehaviour
@@ -35,13 +32,12 @@ public class UIController : MonoBehaviour
 
     private void UpdateHudLife(float currentLife)
     {
-        Debug.Log("Update HUD player life " + currentLife);
-
         _hud.UpdateLife(currentLife);
     }
 
     public void StartHUDLife(float maxLife)
     {
+        _hud.SetMaxLife(maxLife);
         _hud.UpdateLife(maxLife);
     }
 

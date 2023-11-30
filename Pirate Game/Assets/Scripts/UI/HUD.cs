@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System.Text;
 
 public class HUD : MonoBehaviour
 {
@@ -41,8 +38,6 @@ public class HUD : MonoBehaviour
 
     public void UpdateLife(float value)
     {
-        Debug.Log("UPDATE HUD SLIDER " + value);
-
         _lifeSlider.UpdateSlider(value);
     }
 
@@ -56,9 +51,6 @@ public class HUD : MonoBehaviour
     public void Reset()
     {
         _timer.Reset();
-
         _score.text = "0";
-
-        //_currentLife = _maxLife;
     }
 }

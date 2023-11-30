@@ -4,6 +4,9 @@ using UnityEngine;
 public class HealthBase : MonoBehaviour, IHealth, IDamageable
 {
     [SerializeField]
+    private float _maxLife;
+
+    [SerializeField]
     private float _startLife;
 
     [SerializeField]
@@ -17,9 +20,6 @@ public class HealthBase : MonoBehaviour, IHealth, IDamageable
 
     [SerializeField]
     private float _damageToDeal;
-
-    [SerializeField]
-    private float _maxLife = 10;
 
     private float _currentLife;
     public float CurrentLife { get { return _currentLife; } }
