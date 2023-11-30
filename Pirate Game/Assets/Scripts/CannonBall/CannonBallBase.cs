@@ -67,7 +67,6 @@ public class CannonBallBase : MonoBehaviour, IEnable, ICollision, IAnimation
         _isActive = true;
         _hasCollided = false;
 
-        _animator.gameObject.SetActive(true);
     }
 
     public void Reset()

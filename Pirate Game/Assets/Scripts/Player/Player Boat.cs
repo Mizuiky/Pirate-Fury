@@ -65,7 +65,7 @@ public class PlayerBoat : MonoBehaviour, ICollision, IAnimation
 
         transform.position = startPosition;
 
-        _destructionAnimation.gameObject.SetActive(false);
+        _destructionAnimation.gameObject.SetActive(true);
     }
 
     public void Reset()
@@ -78,7 +78,7 @@ public class PlayerBoat : MonoBehaviour, ICollision, IAnimation
 
         _hasCollided = false;
 
-        _destructionAnimation.gameObject.SetActive(false);
+        _destructionAnimation.gameObject.SetActive(true);
     }
 
     private void PlayerInput()
