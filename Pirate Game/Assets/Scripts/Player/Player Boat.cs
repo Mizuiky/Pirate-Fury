@@ -53,8 +53,6 @@ public class PlayerBoat : MonoBehaviour, ICollision
             _healthBase.Reset();
         }
 
-        EnableCollisions(true);
-
         Timer.OnTimerIsOver += OnDisablePlayer;
 
         _move?.Init();
@@ -66,8 +64,6 @@ public class PlayerBoat : MonoBehaviour, ICollision
 
     public void Reset()
     {
-        EnableCollisions(true);
-
         //reset player position
 
         _healthBase.Reset();
@@ -78,16 +74,6 @@ public class PlayerBoat : MonoBehaviour, ICollision
 
         _hasCollided = false;
         //reset player animation
-    }
-
-    public void EnableCollisions(bool enable)
-    {
-        //foreach (CollisionBase collision in _collisions)
-        //{
-        //    collision.colliderComponent.gameObject.SetActive(enable);
-
-        //    Debug.Log("enabled colliders " + gameObject.tag +  collision.colliderComponent.gameObject.activeInHierarchy);
-        //}
     }
 
     private void PlayerInput()
@@ -134,8 +120,6 @@ public class PlayerBoat : MonoBehaviour, ICollision
         _hasCollided = true;
 
         _move.isMoving = false;
-
-        EnableCollisions(false);
     }
 
     public void StopPlayer()

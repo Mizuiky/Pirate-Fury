@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class TripleCannonBall : CannonBallBase
@@ -17,42 +18,26 @@ public class TripleCannonBall : CannonBallBase
 
     protected override void Start()
     {
-        Debug.Log("triple start");
-
         _boxCollider = GetComponent<BoxCollider2D>();
-
-        if (_ballSprite != null)
-            _boxCollider.size = new Vector2(_ballSprite.bounds.size.x, _ballSprite.bounds.size.y);
+        _boxCollider.size = new Vector2(_ballSprite.bounds.size.x, _ballSprite.bounds.size.y);
 
         SetPosition();
-
         UpdateColliderRange();
     }
 
     private void  SetPosition()
     {
-        for(int i = 0; i < 3; i++)
-        {
-            if(i == 0)
-            {
-                _cannonBalls[i].transform.position = transform.position + new Vector3(_ballOffset, 0, 0);
-            }
-            else if(i == 1)
-            {
-                _cannonBalls[i].transform.position = transform.position;
-            }
-            else if(i == 2)
-            {
-                _cannonBalls[i].transform.position = transform.position - new Vector3(_ballOffset, 0, 0);
-            }
-        }
+        Vector3 p = transform.position;
+
+        _cannonBalls[0].transform.position = p - transform.right * _ballOffset;
+        _cannonBalls[1].transform.position = p;
+        _cannonBalls[2].transform.position = p + transform.right * _ballOffset;
     }
 
     private void UpdateColliderRange()
     {
         Vector2 originalSize = _boxCollider.size;
-
-        Vector2 newSize = new Vector2((originalSize.x * 3) + _ballOffset, originalSize.y);
+        Vector2 newSize = new(originalSize.x + _ballOffset * 2, originalSize.y);
 
         _boxCollider.size = newSize;
     }
