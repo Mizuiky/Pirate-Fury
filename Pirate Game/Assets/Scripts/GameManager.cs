@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
 
     private void InstantiateEnemy()
     {
-        IEnable enemy = pool.GetItem(PoolType.EnemyShooter);
+        IEnable enemy = pool.GetItem(PoolType.EnemyChaser);
 
         enemy?.Init(_enemyStartPosition.position, _enemyStartPosition.rotation);
     }
