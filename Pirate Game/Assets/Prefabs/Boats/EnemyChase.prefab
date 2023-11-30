@@ -201,6 +201,7 @@ GameObject:
   - component: {fileID: 958487465917591494}
   - component: {fileID: 1086781850882445398}
   - component: {fileID: 4486446450677991383}
+  - component: {fileID: -7190401842256675731}
   m_Layer: 3
   m_Name: EnemyChase
   m_TagString: EnemyChaser
@@ -241,7 +242,7 @@ MonoBehaviour:
   _pointsToGiveOnDeath: 1
   colliders: {fileID: 2435792202350764225}
   type: 1
-  _speed: 3
+  _speed: 1
 --- !u!114 &4486446450677991383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +258,34 @@ MonoBehaviour:
   _startLife: 10
   _damagePercent: 1
   healthSlider: {fileID: 1929615261685776140}
-  _damageToDeal: 1
+  _damageToDeal: 10
+--- !u!50 &-7190401842256675731
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576446198536488726}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &2049814549578595400
 GameObject:
   m_ObjectHideFlags: 0

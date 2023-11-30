@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CollisionManager
@@ -8,10 +6,6 @@ public class CollisionManager
     private ComponentType _currentCollidedComponentTag;
 
     private ComponentType _currentRootComponentTag;
-
-    private GameObject _currentRootComponent;
-
-    private GameObject _currentCollidedObject;
 
     private IDamageable _rootComponent;
 
@@ -24,8 +18,6 @@ public class CollisionManager
 
     private void ManagerCollisions(GameObject rootComponent, GameObject collidedObject)
     {
-        Debug.Log(rootComponent.tag + " Collided "+ " with " + collidedObject.tag);
-
         try
         {
             Enum.TryParse(collidedObject.tag, out _currentCollidedComponentTag);
@@ -33,82 +25,64 @@ public class CollisionManager
         }
         catch(Exception e)
         {
-            Debug.Log(e);
+            Debug.LogError("trying to get the enum: "+e);
         }
-       
+
         switch (_currentRootComponentTag)
         {
             case ComponentType.Player:
 
-                if (_currentCollidedComponentTag == ComponentType.EnemyChaser)
-                {
-                    SetTargetDamage(collidedObject, rootComponent);
+                if (_currentCollidedComponentTag == ComponentType.CannonBall)
+                    HitShoot(rootComponent, collidedObject);
 
-                    Destroy(collidedObject);
-                }
-                    
-                else if(_currentCollidedComponentTag == ComponentType.EnemyShooter)
-                {
-                    SetTargetDamage(rootComponent, collidedObject);
-
-                    SetTargetDamage(collidedObject, rootComponent);
-                }
-                    
                 break;
 
             case ComponentType.EnemyChaser:
 
                 if (_currentCollidedComponentTag == ComponentType.Player)
-                    
+                {
                     SetTargetDamage(rootComponent, collidedObject);
-
                     Destroy(rootComponent);
+                }
+                else if (_currentCollidedComponentTag == ComponentType.CannonBall)
+                    HitShoot(rootComponent, collidedObject);
 
                 break;
 
             case ComponentType.EnemyShooter:
 
-                if (_currentCollidedComponentTag == ComponentType.Player)
-                    
-                    SetTargetDamage(rootComponent, collidedObject);
+                if (_currentCollidedComponentTag == ComponentType.CannonBall)
+                    HitShoot(rootComponent, collidedObject);
 
                 break;
-
-            case ComponentType.CannonBall:
-
-                CannonBallBase ball = rootComponent.GetComponent<CannonBallBase>();
-
-                if(!ball.HasCollided)
-                {
-                    ball?.OnCollision();
-
-                    IDamageable targetToDamage = collidedObject.GetComponent<IDamageable>();
-                    targetToDamage?.Damage(ball.DamageValue);
-                }               
-                
-                   
-            break;
         }         
+    }
+
+    private void HitShoot(GameObject rootComponent, GameObject collidedObject)
+    {
+        CannonBallBase ball = collidedObject.GetComponent<CannonBallBase>();
+
+        if (!ball.HasCollided)
+        {
+            ball.OnCollision();
+            IDamageable targetToDamage = rootComponent.GetComponent<IDamageable>();
+            targetToDamage?.Damage(ball.DamageValue);
+        }
     }
 
     private void Destroy(GameObject componentToDestroy)
     {
-
         IDamageable destroy = componentToDestroy.GetComponent<IDamageable>();
 
-        Debug.Log("destroy method " + componentToDestroy.tag);
+        if (destroy == null)
+            throw new Exception("Trying to destroy a non damageable component: "+componentToDestroy.tag);
 
-        if (destroy != null)
-        {
-            Debug.Log("PASSOU DESTROY ");
-            destroy.Destroy();
-        }           
+        destroy.Destroy();
     }
 
     private void SetTargetDamage(GameObject rootComponent, GameObject target)
     {
         _rootComponent = rootComponent.GetComponent<IDamageable>();
-
         _targetToDamage = target.GetComponent<IDamageable>();
 
         if(_rootComponent != null && _targetToDamage != null)
