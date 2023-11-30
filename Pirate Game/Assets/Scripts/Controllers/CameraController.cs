@@ -11,7 +11,6 @@ public class CameraController : MonoBehaviour
     {
         _camera.LookAt = player;
         _camera.Follow = player;
-
         _camera.m_Lens.OrthographicSize = 6.5f;
     }
 }

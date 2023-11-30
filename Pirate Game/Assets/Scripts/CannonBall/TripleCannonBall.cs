@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class TripleCannonBall : CannonBallBase
@@ -13,6 +10,7 @@ public class TripleCannonBall : CannonBallBase
 
     [SerializeField]
     private SpriteRenderer _ballSprite;
+
 
     private BoxCollider2D _boxCollider;
 

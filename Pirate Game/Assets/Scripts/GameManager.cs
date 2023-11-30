@@ -100,6 +100,8 @@ public class GameManager : MonoBehaviour
 
         _UIController.Reset();
 
+        _collisionManager.Init();
+
     }
 
     private void OnEndGame()
@@ -116,6 +118,8 @@ public class GameManager : MonoBehaviour
     {
         _playerBoat.OnPlayerDeath -= OnEndGame;
         _playerBoat.OnPlayerStop -= OnEndGame;
+
+        _collisionManager.OnDisable();
 
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
