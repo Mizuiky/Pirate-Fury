@@ -851,6 +851,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Timer
       objectReference: {fileID: 0}
+    - target: {fileID: 801058012010398903, guid: 17e0c8c5db4637e47aa5ad626f0654c4, type: 3}
+      propertyPath: m_Value
+      value: 0.028
+      objectReference: {fileID: 0}
+    - target: {fileID: 801058012010398903, guid: 17e0c8c5db4637e47aa5ad626f0654c4, type: 3}
+      propertyPath: m_MaxValue
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 915273776871698277, guid: 17e0c8c5db4637e47aa5ad626f0654c4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -962,6 +970,10 @@ PrefabInstance:
     - target: {fileID: 2529693322208964664, guid: 17e0c8c5db4637e47aa5ad626f0654c4, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478609606727922741, guid: 17e0c8c5db4637e47aa5ad626f0654c4, type: 3}
+      propertyPath: m_FillAmount
+      value: 0.009333334
       objectReference: {fileID: 0}
     - target: {fileID: 8154522567367851066, guid: 17e0c8c5db4637e47aa5ad626f0654c4, type: 3}
       propertyPath: m_AnchorMax.y
