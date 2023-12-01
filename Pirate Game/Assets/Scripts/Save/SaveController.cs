@@ -61,4 +61,13 @@ public class SaveController
 
         _saveData.playerPoints = points;
     }
+
+    public void SaveData()
+    {
+        PlayerPrefs.SetFloat("GameSessionTime", Data.gameSessionTime);
+        PlayerPrefs.SetFloat("EnemySpawnTime", Data.enemySpawnTime);
+        PlayerPrefs.SetInt("Score", Data.playerPoints);
+
+        PlayerPrefs.Save();
+    }
 }

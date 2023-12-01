@@ -7,4 +7,15 @@ public class SceneControlller : MonoBehaviour
     {
         SceneManager.LoadScene(scene);
     }
+
+    public void QuitGame()
+    {
+        #if UNITY_EDITOR
+
+        UnityEditor.EditorApplication.isPlaying = false;
+
+        #endif
+
+        Application.Quit();
+    }
 }
