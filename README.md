@@ -3,6 +3,8 @@
 
 Welcome aboard, matey! Step into the shoes of a fearless pirate captain in "Pirate's Fury," the swashbuckling Unity-based top-down shooter that will test your mettle on the high seas. Here's a quick guide to steer you through the currents of our GitHub repository.
 
+![preview](assets/preview.gif)
+
 ---
 
 ## Game Overview
@@ -53,7 +55,8 @@ Cunning adversaries that will test your dodging prowess, shooting from a distanc
 ### Islands:
 Natural barriers that offer strategic challenges and opportunities within the game's arena.
   
-*(Include a screenshot or small gif showcasing the islands and how they affect gameplay.)*
+
+<img src="assets/islands.png" alt="Islands" width="350"/>
 
 ---
 
