@@ -1,5 +1,5 @@
 
-# Pirate's Fury: The Top-Down Shooter (Game Title)
+# Pirate's Fury: The Top-Down Shooter
 
 Welcome aboard, matey! Step into the shoes of a fearless pirate captain in "Pirate's Fury," the swashbuckling Unity-based top-down shooter that will test your mettle on the high seas. Here's a quick guide to steer you through the currents of our GitHub repository.
 
