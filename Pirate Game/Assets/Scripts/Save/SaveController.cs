@@ -1,12 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SaveController
 {
     private SaveData _saveData;
-
     public SaveData Data { get { return _saveData; } }
 
     public SaveController()
@@ -35,16 +31,6 @@ public class SaveController
             PlayerPrefs.SetInt("Score", 0);
 
         PlayerPrefs.Save();
-
-        Debug.Log("GET DATA");
-        Debug.Log("GameSessionTime " + _saveData.gameSessionTime.ToString());
-        Debug.Log("EnemySpawn " + _saveData.enemySpawnTime.ToString());
-        Debug.Log("PlayerPoints " + _saveData.playerPoints.ToString());
-
-        Debug.Log("GET DATA PlayerPrefs");
-        Debug.Log("GameSessionTime " + PlayerPrefs.GetFloat("GameSessionTime"));
-        Debug.Log("EnemySpawn " + PlayerPrefs.GetFloat("EnemySpawnTime"));
-        Debug.Log("PlayerPoints " + PlayerPrefs.GetInt("Score"));
     }
 
     public void DeleteKeys()

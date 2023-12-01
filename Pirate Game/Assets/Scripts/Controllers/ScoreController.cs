@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class ScoreController
 {
@@ -19,7 +16,6 @@ public class ScoreController
     public void AddPoints(int point)
     {
         _points += point;
-
         OnUpdateScore?.Invoke(_points);
     }
 

@@ -63,6 +63,7 @@ public class ShipDeteriorate : MonoBehaviour
     public void UpdateShipState(float currentLife)
     {
         Level newState = GetCurrentState(currentLife);
+
         if (newState != _currentState)
         {
             _currentState = newState;

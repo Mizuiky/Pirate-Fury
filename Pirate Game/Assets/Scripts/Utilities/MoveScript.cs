@@ -2,24 +2,18 @@ using UnityEngine;
 
 public class MoveScript : MonoBehaviour
 {
-    [Header("Movement Components")]
-
     [SerializeField]
     private float _speed;
 
     private Vector3 _moveTo;
-
     private Vector2 _direction;
 
     private float _horizontal;
-
     private float _vertical;
 
     public bool isMoving = false;
 
     [Space(10)]
-
-    [Header("Rotation Components")]
 
     [SerializeField]
     private float _speedRotation;
@@ -63,9 +57,7 @@ public class MoveScript : MonoBehaviour
 
     private void Rotate()
     {
-
         Quaternion desiredRotation = Quaternion.LookRotation(Vector3.forward, _moveTo);
-
         transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, _speedRotation * Time.deltaTime);
     }
 

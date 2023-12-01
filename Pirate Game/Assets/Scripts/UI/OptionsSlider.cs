@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -36,14 +34,8 @@ public class OptionsSlider : MonoBehaviour
 
     public void SetValue(float value)
     {
-        Debug.Log("slider value" + _slider.value);
-
         _currentTime = value / 60;
 
-        Debug.Log("time in seconds" + _currentTime);
-
         _timeText.text = _currentTime.ToString("0.00");
-
-        Debug.Log("_timeText.text" + _timeText.text);
     }
 }

@@ -29,16 +29,14 @@ public class PlayerBoat : MonoBehaviour, ICollision, IAnimation
 
     public PlayerHealth Health { get { return _healthBase; } }
 
-    public Action OnPlayerDeath;
-
-    public Action OnPlayerStop;
-
     public Transform PlayerPosition { get { return transform; } }
 
     public bool HasCollided { get { return _hasCollided; } set { _hasCollided = value; } }
 
     private bool _hasCollided;
 
+    public Action OnPlayerDeath;
+    public Action OnPlayerStop;
 
     public void Update()
     {
@@ -83,7 +81,6 @@ public class PlayerBoat : MonoBehaviour, ICollision, IAnimation
 
     private void PlayerInput()
     {
-
         if (Input.GetKeyDown(_input.shootKey))
             _cannon.StartShoot(PoolType.CannonBall);
 
@@ -92,34 +89,24 @@ public class PlayerBoat : MonoBehaviour, ICollision, IAnimation
 
         else if (Input.GetKeyUp(_input.shootKey) || Input.GetKeyUp(_input.tripleShootKey))
             _cannon.isShooting = false;
-
-        //Test
-        if (Input.GetKeyDown(KeyCode.L))
-            _healthBase.Damage(2f);
     }
 
-    private void OnDamage()
+    private void OnDamage() 
     {
-        //flash color
+        //TODO: flash color
     }
 
     private void OnDeath()
     {
-        Debug.Log("OnPlayerDeath");
-
         _destructionAnimation.gameObject.SetActive(true);
 
         _destructionAnimation.Play("Destruction");
-
     }
 
     public void OnDisablePlayer()
     {
-        Debug.Log("OnDisablePlayer");
-
         _hasCollided = true;
         _move.isMoving = false;
-
     }
 
     public void OnEndAnimation()
@@ -133,8 +120,6 @@ public class PlayerBoat : MonoBehaviour, ICollision, IAnimation
  
     public void StopPlayer()
     {
-        Debug.Log("OnStopPlayer");
-
         _hasCollided = true;
         _move.isMoving = false;
 
@@ -144,7 +129,6 @@ public class PlayerBoat : MonoBehaviour, ICollision, IAnimation
 
     public void OnDisable()
     {
-
         _healthBase.OnKill -= OnDeath;
         _healthBase.OnDamage -= OnDamage;
 

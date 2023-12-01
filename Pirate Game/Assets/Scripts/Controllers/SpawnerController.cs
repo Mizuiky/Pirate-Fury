@@ -13,7 +13,6 @@ public class SpawnerController : MonoBehaviour
 
     [SerializeField]
     private Transform _playerStartPosition;
-
     private PlayerBoat _player;
 
     [Header("Enemy")]
@@ -30,11 +29,12 @@ public class SpawnerController : MonoBehaviour
     private float _timeToSpawn;
     private float _elapsedTime;
 
-
     public void Init(float timeToSpawn)
     {
-        if (pool != null)
-            pool.InitPool();
+        if (pool == null)
+            return;
+
+        pool.InitPool();
 
         SpawnPlayer();
 
@@ -53,9 +53,6 @@ public class SpawnerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
-            SpawnEnemy();
-
         if (_isActive)
         {
             if (_elapsedTime <= _timeToSpawn)

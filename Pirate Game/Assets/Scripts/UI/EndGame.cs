@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -23,7 +21,6 @@ public class EndGame : MonoBehaviour
 
     public void PlayAgain()
     {
-
         EnableEndPanel(true);
 
         GameManager.Instance.Restart();        
@@ -31,8 +28,6 @@ public class EndGame : MonoBehaviour
 
     public void Show()
     {
-        Debug.Log("Score:" + GameManager.Instance.SaveController.Data.playerPoints.ToString());
-
         _scoreText.text = GameManager.Instance.SaveController.Data.playerPoints.ToString();
 
         _endPanel.SetActive(true);

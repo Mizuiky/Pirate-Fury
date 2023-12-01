@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -15,10 +13,10 @@ public class SliderBase : MonoBehaviour
     [SerializeField]
     private float _duration;
 
-    private Tween _currentTween;
-
     [SerializeField]
     private Ease _ease;
+
+    private Tween _currentTween;
 
     public void Init(float max)
     {

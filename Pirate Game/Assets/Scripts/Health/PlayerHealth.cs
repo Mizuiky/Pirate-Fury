@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealth : HealthBase
@@ -10,10 +8,7 @@ public class PlayerHealth : HealthBase
 
     public override void UpdateLife(float value)
     {
-        Debug.Log("Update player life " + value);
-
         base.UpdateLife(value);
-
         OnUpdateLife?.Invoke(value);
     }
 }

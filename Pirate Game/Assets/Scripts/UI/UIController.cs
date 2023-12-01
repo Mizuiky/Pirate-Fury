@@ -16,7 +16,6 @@ public class UIController : MonoBehaviour
         _hud.Init();
 
         _endGamePanel.EnableEndPanel(false);
-
     }
 
     public void Reset()

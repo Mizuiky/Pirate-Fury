@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,7 +27,6 @@ public class Pool : MonoBehaviour
         foreach (PoolComponent poll in _pools)
         {
             poolDictionary.Add(poll.type, poll);
-
             CreatePool(poll);
         }
     }
@@ -66,7 +64,6 @@ public class Pool : MonoBehaviour
     private IEnable CreatePoolItem(PoolComponent pool)
     {
         GameObject prefab = Instantiate(pool.prefab, pool.parent);
-
         poolItem = prefab.GetComponent<IEnable>();
 
         if (poolItem == null)
@@ -79,7 +76,6 @@ public class Pool : MonoBehaviour
     public IEnable GetItem(PoolType type)
     {
         usedPool = null;
-
         usedPool = poolDictionary[type];
 
         foreach(IEnable poolItem in usedPool.poolList)
@@ -103,7 +99,6 @@ public class Pool : MonoBehaviour
 [System.Serializable]
 public class PoolComponent
 {
-
     public GameObject prefab;
 
     public int size;
@@ -113,5 +108,4 @@ public class PoolComponent
     public Transform parent;
 
     public List<IEnable> poolList;
-
 }

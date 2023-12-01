@@ -29,7 +29,6 @@ public class HealthBase : MonoBehaviour, IHealth, IDamageable
     public Action OnKill;
     public Action OnDamage;
 
-
     private void Start()
     {
         _currentLife = _startLife;

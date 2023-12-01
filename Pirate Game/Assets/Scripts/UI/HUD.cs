@@ -44,7 +44,6 @@ public class HUD : MonoBehaviour
     public void SetMaxLife(float max)
     {
         _maxLife = max;
-
         _lifeSlider.Init(_maxLife);
     }
 

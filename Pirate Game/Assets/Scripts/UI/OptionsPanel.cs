@@ -1,26 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class OptionsPanel : MonoBehaviour
 {
+    [SerializeField]
+    private OptionsSlider[] _sliders;
+
     [HideInInspector]
     public float gameSessionTime;
 
     [HideInInspector]
     public float enemySpawnTime;
 
-    [SerializeField]
-    private OptionsSlider[] _sliders;
-
     public void OnEnablePanel(bool enable)
     {
-
         if (!enable)
         {
             SetGameSessionTime();
             SetEnemySpawnTime();
-
         }
 
         gameObject.SetActive(enable);

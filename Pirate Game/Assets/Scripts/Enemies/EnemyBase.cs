@@ -26,12 +26,8 @@ public class EnemyBase : MonoBehaviour, IEnable, ICollision, IAnimation
 
     private bool _isActive;
     public bool IsActive { get { return _isActive; } }
-    public bool Health { get { return healthBase; } }
 
-    private void Update()
-    {
-        
-    }
+    public bool Health { get { return healthBase; } }
 
     public virtual void Init(Vector3 position, Quaternion rotation)
     {
@@ -41,7 +37,6 @@ public class EnemyBase : MonoBehaviour, IEnable, ICollision, IAnimation
 
         GameManager.Instance.PlayerBoat.OnPlayerDeath += DisableComponent;
         Timer.OnTimerIsOver += DisableComponent;
-
 
         if (healthBase != null)
         {
@@ -80,16 +75,7 @@ public class EnemyBase : MonoBehaviour, IEnable, ICollision, IAnimation
         _destructionAnimation.gameObject.SetActive(true);
     }
 
-
-
-    public void EnableColliders(bool enable)
-    {
-    }
-
-    protected virtual void OnDamage()
-    {
-        //damage animation
-    }
+    protected virtual void OnDamage() { }
 
     protected virtual void OnDeath()
     {

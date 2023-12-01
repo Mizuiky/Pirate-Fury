@@ -14,22 +14,18 @@ public class EnemyShooter : EnemyBase
     private PoolType _cannonBallType;
 
     private Vector3 _direction;
-
     private bool _canShoot;
 
     private void Update()
     {
-
         if (target != null && IsActive)
         {
-
             _direction = target.position - transform.position;
             _direction.Normalize();
 
             Debug.DrawRay(transform.position, _direction * 20, Color.magenta);
 
             Quaternion desiredRotation = Quaternion.LookRotation(Vector3.forward, _direction);
-
             transform.rotation = desiredRotation;
 
             if (Vector3.Distance(transform.position, target.position) <= _distanceToShoot)
