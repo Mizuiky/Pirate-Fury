@@ -25,8 +25,8 @@ In "Pirate's Fury," you are tasked with a simple yet thrilling challenge: surviv
 
 ## Controls & Mechanics
 
-- Move Forward: ↑
-- Rotate: →, ←
+- Move Forward: ↑ or w
+- Rotate: →, ← or a, d
 - Frontal Single Shot Attack: Space
 - Side Triple Shot Attack: T
 
@@ -39,14 +39,14 @@ In "Pirate's Fury," you are tasked with a simple yet thrilling challenge: surviv
 ### Chaser:
 These persistent foes will hunt you down relentlessly, pushing you to navigate with skill and speed.
 
-![Chaser](assets/chaser.png)
+![Chaser](assets/shotter.png)
 
 
 
 ### Shotter:
 Cunning adversaries that will test your dodging prowess, shooting from a distance with deadly accuracy.
 
-![Shotter](assets/shotter.png)
+![Shooter](assets/chaser.png)
 
 ---
 
@@ -76,7 +76,7 @@ Before you set sail, ensure you've got everything you need:
 git clone https://github.com/Mizuiky/Pirate-Game-Painful-Smile-Test
 ```
 2. **Open the project in Unity**:
-Ensure you have Unity 2202.3 installed. Once opened, navigate through the project files to find the _Main Menu Scene_ and hit play to start the editor preview.
+Ensure you have Unity 2022.3 installed. Once opened, navigate through the project files to find the _Main Menu Scene_ and hit play to start the editor preview.
 
 ---
 
